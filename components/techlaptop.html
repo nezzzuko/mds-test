@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+      @media (min-width: 1025px) and (max-width: 1280px) {
+        body {
+          font-family: "Open Sans", sans-serif;
+          background-color: #f5f5f5;
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+        }
+
+        .logomain {
+          height: 100px;
+        }
+
+        .logo {
+          width: 100%;
+          height: 100%;
+        }
+
+        /* CSS */
+        .navitems {
+          list-style: none;
+          display: flex;
+          gap: 2rem;
+          font-size: 1.12rem;
+          position: relative;
+        }
+
+        .navcontainer {
+          height: 100px;
+          background-color: #f5f5f5;
+        }
+
+        .navbody {
+          padding-left: 2rem;
+          padding-right: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transition: opacity 1s ease-in;
+        }
+
+        .navright {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .navbutton {
+          color: #ffffff;
+          background: black;
+          padding-right: 1rem;
+          padding-left: 1rem;
+          outline: 0;
+          border: 0px;
+          font-size: 1rem;
+          white-space: nowrap;
+          transition: opacity 1s ease-in;
+          text-decoration: no;
+          cursor: pointer;
+        }
+
+        /* Hover effect for button */
+        .navbutton:hover {
+          background-color: #a2b3d4;
+          /* Change background color on hover */
+          color: #ffffff;
+        }
+
+        .navitems a {
+          position: relative;
+          display: inline-block;
+          text-decoration: none !important;
+          /* Ensure underline is removed */
+          color: black;
+          /* Set the desired color */
+          transition: color 0.3s;
+          /* Optional: for hover effect */
+        }
+
+        /* Global style for all anchor tags to prevent underline */
+        a {
+          text-decoration: none;
+          /* Remove underline globally */
+          color: black;
+          /* Consistent text color */
+          text-wrap: nowrap;
+        }
+
+        /* Hover underline effect using ::after pseudo-element */
+        .navitems a::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -5px;
+          /* Distance from text */
+          width: 100%;
+          height: 2px;
+          /* Thickness of the underline */
+          background-color: #a2b3d4;
+          /* Color of the underline */
+          transform: scaleX(0);
+          /* Start hidden */
+          transform-origin: bottom right;
+          /* Starting point of the underline */
+          transition: transform 0.3s ease-out;
+          /* Smooth transition */
+        }
+
+        .navitems a:hover::after {
+          transform: scaleX(1);
+          /* Scale underline to full width */
+          transform-origin: bottom left;
+          /* Ending point of the underline */
+        }
+
+        .navright {
+          display: flex;
+          gap: 2rem;
+        }
+
+        a {
+          color: black;
+          cursor: pointer;
+          position: relative;
+          transition: color 0.3s ease-in;
+          /* Smooth color change */
+          text-decoration: none;
+          /* Ensure no default underline */
+        }
+
+        .navitems a.active {
+          color: #385584;
+          /* Set the color for the active link */
+        }
+
+        .navitems a.active::after {
+          transform: scaleX(1);
+          /* Ensure underline is visible for the active link */
+          background-color: #a2b3d4;
+          /* Maintain underline color for active link */
+        }
+
+        .services1body {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+          gap: 2rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        .services1content h2 {
+          font-size: 3rem;
+        }
+
+        .services1content h4 {
+          font-size: 2rem;
+          padding: 0;
+          margin: 0;
+        }
+
+        .services2body {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+        }
+
+        .services2content {
+          padding: 0 0 0 10%;
+        }
+
+        .services2content:nth-child(2) {
+          padding: 0 10% 0 0;
+        }
+
+        .services2content h2 {
+          font-size: 3.8rem;
+          font-weight: 800;
+          text-wrap: nowrap;
+          margin: 0;
+          padding: 0;
+          line-height: 1;
+        }
+
+        .services2content h4 {
+          font-size: 20px;
+          padding: 0;
+          margin: 0;
+          margin-top: 1rem;
+        }
+
+        .services4body {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .services4bodymain {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+        }
+
+        .services4content {
+          padding: 0 0 0 10%;
+        }
+
+        .services4content:nth-child(2) {
+          padding: 0 10% 0 0;
+        }
+
+        .services4content h2 {
+          font-size: 3.8rem;
+          font-weight: 800;
+          text-wrap: nowrap;
+          padding: 0;
+          margin: 0;
+          line-height: 1;
+        }
+
+        .services4content h4 {
+          font-size: 20px;
+          padding: 0;
+          margin: 0;
+          margin-top: 1rem;
+        }
+
+        .services9body {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .services9body h2 {
+          font-size: 3rem;
+        }
+
+        .services9body h4 {
+          font-size: 2rem;
+          padding: 0;
+          margin: 0;
+        }
+
+        .tech-img {
+          display: flex;
+          height: 100%;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .tech-img img {
+          height: 95%;
+          width: 95%;
+          transform: scaleX(-1);
+        }
+
+        .service-img2 {
+          height: 100%;
+          display: flex;
+          padding: 0 10% 0;
+        }
+
+        .service-img2 img {
+          object-fit: contain;
+          width: 100%;
+        }
+
+        .service-img3 {
+          display: flex;
+          height: 100%;
+          padding: 0 10% 0 0;
+        }
+
+        .service-img3:nth-child(1) {
+          display: flex;
+          height: 100%;
+          padding-left: 10%;
+        }
+
+        .service-img3 img {
+          width: 100%;
+        }
+
+        .service-img4 {
+          display: flex;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .service-img4 img {
+          height: 150%;
+          width: 150%;
+        }
+
+        .services-list {
+          margin-left: -1.4rem;
+        }
+
+        .services-list li {
+          margin-bottom: 0.5rem;
+          font-size: 1.12rem;
+        }
+
+        .tech2,
+        .tech3,
+        .tech4 {
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        #tech {
+          height: calc(100vh - 100px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: white;
+        }
+
+        .details3container {
+          background-color: #222;
+          height: 20rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3body {
+          height: 100%;
+          color: white;
+          padding-left: 7rem;
+          padding-right: 7rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3header {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .details3content {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 3rem;
+        }
+
+        .details3content h1 {
+          font-size: 3rem;
+          line-height: 1;
+          margin: auto;
+          font-weight: 400;
+        }
+
+        .details10container {
+          background-color: black;
+          height: 12rem;
+        }
+
+        .details10body {
+          color: white;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details10header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4rem;
+        }
+
+        .letsgetstarted {
+          color: #111;
+          background: #a2b3d4;
+          padding: 1rem;
+          outline: 0;
+          border: 0px;
+          font-size: 1.2rem;
+        }
+
+        .details11container {
+          background-color: #000000;
+          font-size: 1rem;
+        }
+
+        .details11body {
+          color: rgb(255, 255, 255);
+          padding: 5rem;
+          padding: 3rem 0 3rem;
+          display: flex;
+          justify-content: center;
+          gap: 5rem;
+          font-size: 10px;
+          opacity: 30%;
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: 400;
+        }
+
+        .details11body a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .icons {
+          gap: 90px;
+          display: flex;
+          justify-content: center;
+          color: white;
+        }
+
+        .icons a {
+          text-decoration: none;
+          cursor: pointer;
+          color: white;
+          transition: none;
+        }
+
+        .icons a:hover {
+          text-decoration: none;
+        }
+
+        .footerimage {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 0rem;
+        }
+
+        .footerimage img {
+          width: 30%;
+        }
+
+        #backToTopBtn {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          display: none;
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          z-index: 1000;
+          transition: opacity 0.3s, transform 0.3s;
+        }
+
+        #backToTopBtn img {
+          width: 80px;
+        }
+
+        #backToTopBtn.show {
+          display: block;
+        }
+
+        #backToTopBtn.fade-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        #backToTopBtn.fade-out {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        #backToTopBtn:hover {
+          transform: scale(1.1);
+        }
+
+        .tech1container {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .tech1body {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .tech1content {
+          padding: 0 10% 0;
+        }
+
+        .tech1content h1 {
+          font-size: 4rem;
+          font-weight: 800;
+          text-wrap: nowrap;
+          margin: 0;
+          padding: 0;
+          line-height: 1;
+        }
+
+        .tech1content p {
+          font-size: 1.12rem;
+        }
+
+        .service-img {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 15% 0 0;
+        }
+
+        .service-img img {
+          width: 120%;
+        }
+
+        .services9content {
+          padding: 0 0% 0 10%;
+        }
+
+        .services9content h2 {
+          font-size: 3.8rem;
+          font-weight: 800;
+          margin: 0;
+          padding: 0;
+          line-height: 1;
+        }
+
+        .services9content h4 {
+          font-size: 20px;
+          padding: 0;
+          margin: 0;
+          margin-top: 1rem;
+        }
+
+        .services4container {
+          height: 100%;
+          width: 100%;
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .services44container {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .services9container {
+          height: 100%;
+          width: 100%;
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navcontainer">
+      <div class="navbody">
+        <div class="logomain">
+          <a href="/"
+            ><img
+              class="logo"
+              src="https://mds-new.s3.ap-south-1.amazonaws.com/logo-01.png"
+          /></a>
+        </div>
+        <div class="navright">
+          <ul class="navitems">
+            <li><a href="/home.html">WHO WE ARE</a></li>
+            <li>
+              <a class="active" href="/components/technologies.html"
+                >WHAT WE DO</a
+              >
+            </li>
+            <li><a href="/components/services.html">WHY US</a></li>
+            <li><a href="/components/team.html">TEAM</a></li>
+          </ul>
+          <button
+            class="navbutton"
+            onclick="location.href='/components/contact.html';"
+          >
+            CONTACT US
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tech">
+      <div class="tech1container">
+        <div class="tech1body">
+          <div class="tech1content">
+            <h1>YOUR IDEAS <br />OUR CRAFTS</h1>
+            <p>
+              We bring your ideas to life with precision and creativity,<br />
+              turning vision into expertly crafted results.
+            </p>
+          </div>
+          <div class="service-img">
+            <img src="/assets/rocket.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech2">
+      <div class="services2container">
+        <div class="services2body">
+          <div class="service-img2"><img src="../assets/coding.png" /></div>
+          <div class="services2content">
+            <h2>WEB DEVELOPMENT</h2>
+            <h4>Why Choose Us for Web Development?</h4>
+            <ul class="services-list">
+              <li>
+                <strong>Tailored Solutions:</strong> We don't do
+                one-size-fits-all. Every website we build is custom-designed to
+                reflect your brand and business goals.
+              </li>
+              <li>
+                <strong>Performance-Driven:</strong> Our websites are built with
+                speed, SEO, and user experience in mind to ensure that your
+                audience stays engaged.
+              </li>
+              <li>
+                <strong>Full-Stack Expertise:</strong> From front-end beauty to
+                back-end power, our team covers it all, offering end-to-end
+                development services.
+              </li>
+              <li>
+                <strong>Responsive Design:</strong> We ensure your site works
+                seamlessly across all devices, providing a great user experience
+                on desktops, tablets, and mobile.
+              </li>
+              <li>
+                <strong>Continuous Support:</strong> Our relationship doesn't
+                end when the website launches. We provide ongoing support and
+                updates to keep your site current and secure.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tech3">
+      <div class="services4container">
+        <div class="services4body">
+          <div class="services4content">
+            <h2>FINANCE WEB APP <br />DEVELOPMENT</h2>
+            <h4>Why Choose Us for Finance Web App Development?</h4>
+            <ul class="services-list">
+              <li>
+                <strong>Industry Expertise:</strong> We understand the specific
+                needs of the financial sector, from regulatory compliance to
+                security best practices.
+              </li>
+              <li>
+                <strong>Security-First Approach:</strong> We integrate advanced
+                security measures, such as encryption and multi-factor
+                authentication, to ensure your financial app is fortified
+                against cyber threats.
+              </li>
+              <li>
+                <strong>Real-Time Performance:</strong> Our finance apps are
+                built to process data quickly and reliably, ensuring you and
+                your users can make informed decisions instantly.
+              </li>
+              <li>
+                <strong>Regulatory Compliance:</strong> We ensure that your
+                financial app is fully compliant with industry standards, such
+                as PCI DSS, ensuring trust and legal safety.
+              </li>
+              <li>
+                <strong>Scalability:</strong> Whether you’re building for a
+                local startup or an international firm, we create solutions that
+                grow with your business.
+              </li>
+            </ul>
+          </div>
+          <div class="service-img3">
+            <img src="../assets/Finance WEb Dev-01 (1).svg" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech2">
+      <div class="services2container">
+        <div class="services2body">
+          <div class="service-img2">
+            <img src="../assets/IMAGES 23-01.svg" />
+          </div>
+          <div class="services2content">
+            <h2>CYBER SECURITY</h2>
+            <h4>Why Choose Us for Cyber security?</h4>
+            <ul class="services-list">
+              <li>
+                <strong>Tailored Solutions:</strong> We don't do
+                one-size-fits-all. Every website we build is custom-designed to
+                reflect your brand and business goals.
+              </li>
+              <li>
+                <strong>Performance-Driven:</strong> Our websites are built with
+                speed, SEO, and user experience in mind to ensure that your
+                audience stays engaged.
+              </li>
+              <li>
+                <strong>Full-Stack Expertise:</strong> From front-end beauty to
+                back-end power, our team covers it all, offering end-to-end
+                development services.
+              </li>
+              <li>
+                <strong>Responsive Design:</strong> We ensure your site works
+                seamlessly across all devices, providing a great user experience
+                on desktops, tablets, and mobile.
+              </li>
+              <li>
+                <strong>Continuous Support:</strong> Our relationship doesn't
+                end when the website launches. We provide ongoing support and
+                updates to keep your site current and secure.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tech4">
+      <div class="services9container">
+        <div class="services9body">
+          <div class="services9content">
+            <h2>WEB3 SOLUTIONS</h2>
+            <h4>Why Choose Us for Web3 Development?</h4>
+            <ul class="services-list">
+              <li>
+                <strong>Pioneers in Blockchain:</strong> Our team has deep
+                expertise in the world of decentralized apps, smart contracts,
+                and blockchain development.
+              </li>
+              <li>
+                <strong>Future-Ready Solutions:</strong>We help you navigate the
+                emerging Web3 ecosystem, from developing dApps to creating NFTs,
+                ensuring your business is ready for the next generation of the
+                internet.
+              </li>
+              <li>
+                <strong>Custom Smart Contracts:</strong> We develop smart
+                contracts that are tailored to your project’s specific needs,
+                ensuring efficiency, security, and transparency.
+              </li>
+              <li>
+                <strong>Security by Design:</strong> We understand the
+                importance of security in decentralized systems and integrate
+                cutting-edge security protocols into every solution.
+              </li>
+              <li>
+                <strong>End-to-End Solutions:</strong> From ideation to
+                execution, we provide comprehensive Web3 services, including
+                blockchain consulting, development, and ongoing maintenance.
+              </li>
+            </ul>
+          </div>
+          <div class="service-img4">
+            <img src="../assets/Web3-01 (1).svg" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech3">
+      <div class="services44container">
+        <div class="services4bodymain">
+          <div class="service-img3"><img src="../assets/IMAG2-01.svg" /></div>
+          <div class="services4content">
+            <h2>UI/UX DESIGN</h2>
+            <h4>Why Choose Us for UI/UX Design?</h4>
+            <ul class="services-list">
+              <li>
+                <strong>User-Centered Design:</strong> Focusing on creating
+                intuitive, user-friendly experiences tailored to meet user
+                needs.
+              </li>
+              <li>
+                <strong>Responsive Design:</strong> Ensuring the interface
+                adapts seamlessly across devices and screen sizes.
+              </li>
+              <li>
+                <strong>Functionality & Usability:</strong> Prioritizing
+                practical features and efficient performance for optimal user
+                satisfaction.
+              </li>
+              <li>
+                <strong>Consistency:</strong> Maintaining uniform design
+                elements for a cohesive and familiar experience across the
+                platform.
+              </li>
+              <li>
+                <strong>Interaction Design:</strong> Creating engaging and
+                dynamic elements that improve interaction and boost user
+                engagement.
+              </li>
+              <li>
+                <strong>User Feedback Integration:</strong> Continuously
+                improving the design based on real-world user feedback and
+                behavior analysis.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <h1>FOLLOW MANDIN STUDIOS</h1>
+            <div class="icons">
+              <a
+                href="https://www.instagram.com/mandin_studios/"
+                target="_blank"
+                ><i class="fa-brands fa-instagram fa-3x"></i
+              ></a>
+              <a
+                href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance"
+                target="_blank"
+                ><i class="fa-brands fa-twitter fa-3x"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"
+                ><i class="fa-brands fa-linkedin fa-3x"></i
+              ></a>
+              <a href="https://medium.com/@md-studios" target="_blank"
+                ><i class="fa-brands fa-medium fa-3x"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+
+    <div class="details11container">
+      <div class="details11body">
+        <div>
+          <a href="/home.html">
+            <h1>WHO WE ARE</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/technologies.html">
+            <h1>WHAT WE DO</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/services.html">
+            <h1>WHY US</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/team.html">
+            <h1>TEAM</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/contact.html">
+            <h1>CONTACT</h1>
+          </a>
+        </div>
+      </div>
+
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <button id="backToTopBtn" onclick="scrollToTop()">
+      <img src="/assets/up-arrow-01.png" alt="Back to Top" />
+    </button>
+
+    <script>
+      window.onscroll = function () {
+        toggleBackToTopButton();
+      };
+
+      function toggleBackToTopButton() {
+        const backToTopBtn = document.getElementById("backToTopBtn");
+        if (
+          document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100
+        ) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      }
+
+      // Scroll back to top smoothly
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navRight = document.querySelector(".navright");
+
+        hamburger.addEventListener("click", function () {
+          hamburger.classList.toggle("active");
+          navRight.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".navitems a").forEach((link) => {
+          link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navRight.classList.remove("active");
+          });
+        });
+      });
+      const backToTopBtn = document.getElementById("backToTopBtn");
+
+      function toggleButtonVisibility() {
+        if (window.pageYOffset > 300) {
+          if (!backToTopBtn.classList.contains("show")) {
+            backToTopBtn.classList.add("show");
+            setTimeout(() => {
+              backToTopBtn.classList.add("fade-in");
+            }, 10);
+          }
+        } else {
+          backToTopBtn.classList.remove("fade-in");
+          backToTopBtn.classList.add("fade-out");
+          setTimeout(() => {
+            backToTopBtn.classList.remove("show", "fade-out");
+          }, 300);
+        }
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      window.addEventListener("scroll", toggleButtonVisibility);
+      backToTopBtn.addEventListener("click", scrollToTop);
+
+      document
+        .querySelector(".menu-icon")
+        .addEventListener("click", function () {
+          this.classList.toggle("active");
+          document.querySelector(".navitems").classList.toggle("active");
+        });
+    </script>
+  </body>
+</html>

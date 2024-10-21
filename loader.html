@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG Text Animation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 100vh; /* Full viewport height */
+        margin: 0; /* Remove default margin */
+        background-color: #F0F0F0; /* Optional background color */
+      }
+      svg {
+        width: 400px;
+        height: 100px;
+        overflow: visible;
+      }
+      .text {
+        fill: none; /* No fill initially */
+        stroke: black;
+        stroke-width: 2; /* Increase stroke width */
+        stroke-dasharray: 400; /* Set this to a large enough value for the text length */
+        stroke-dashoffset: 400; /* Start with offset equal to dasharray */
+        animation: loader 5s forwards; /* Initial animation */
+      }
+      @keyframes loader {
+        0% {
+          stroke-dashoffset: 400; /* Start off completely hidden */
+        }
+        90%,
+        100% {
+          stroke-dashoffset: 0; /* Reveal the text */
+        }
+      }
+      .fill {
+        fill: black; /* Color to fill the text */
+        opacity: 0; /* Start hidden */
+        animation: fillText 1s forwards 4s; /* Fill animation after outline */
+      }
+      @keyframes fillText {
+        to {
+          opacity: 1; /* Fully visible */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <text
+        x="50%"
+        y="50%"
+        font-family="'Open Sans', sans-serif"
+        font-size="70"
+        class="text"
+        text-anchor="middle"
+        alignment-baseline="middle"
+      >
+        ManDin Studios
+      </text>
+      <text
+        x="50%"
+        y="50%"
+        font-family="'Open Sans', sans-serif"
+        font-size="70"
+        class="fill"
+        text-anchor="middle"
+        alignment-baseline="middle"
+      >
+        ManDin Studios
+      </text>
+    </svg>
+  </body>
+</html>

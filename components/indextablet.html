@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        background-color: #ffffff;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      :root {
+        --primary-color: #000;
+        --secondary-color: #000;
+        --text-color: #ecf0f1;
+        --transition-speed: 0.3s;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .navbar-menu {
+        display: flex;
+        list-style-type: none;
+      }
+
+      .navbar-menu li {
+        margin-left: 2rem;
+      }
+
+      .navbar-menu a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color var(--transition-speed) ease;
+        position: relative;
+      }
+
+      .navbar-menu a:hover::after {
+        width: 100%;
+      }
+
+      .navbar-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        background-color: black;
+      }
+
+      .navbar-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        margin: 5px auto;
+        transition: all var(--transition-speed) ease-in-out;
+      }
+
+      @media (min-width: 768px) and (max-width: 1024px) {
+        .navbar {
+          background-color: black;
+          padding: 0.5rem 2rem;
+          position: sticky;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          height: 100px;
+        }
+
+        .navbar-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .navbar-logo {
+          height: 100px;
+          display: inline;
+          justify-content: center;
+        }
+
+        .navbar-logo img {
+          width: 18%;
+        }
+
+        .navbar-menu {
+          position: fixed;
+          top: 100px;
+          left: -100%;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          transition: left var(--transition-speed) ease-in-out;
+          background-color: black;
+        }
+
+        .navbar-menu.active {
+          left: 0;
+        }
+
+        .navbar-menu li {
+          margin: 1.5rem 0;
+        }
+
+        .navbar-toggle {
+          display: block;
+        }
+
+        .navbar-toggle.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .navbar-toggle.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .navbar-toggle.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .hero-container {
+          background-color: white;
+        }
+
+        .hero-body {
+          padding-top: 2rem;
+        }
+
+        .mobilehero {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          padding-top: 4rem;
+        }
+
+        .hero-img {
+          width: 85%;
+        }
+
+        .hero-tagline {
+          text-align: left;
+          font-size: 1.1rem;
+          padding-left: 1.3rem;
+        }
+
+        .hero-title {
+          text-align: left;
+        }
+
+        .hero-title-line {
+          line-height: 1;
+          font-size: 4.7rem;
+          font-weight: 800;
+          margin: 0;
+          padding: 0;
+          padding-left: 1rem;
+        }
+
+        .hero-desc {
+          text-align: center;
+          padding-top: 2rem;
+          font-size: 1.2rem;
+        }
+
+        .header2 p {
+          font-size: 1.2rem;
+        }
+
+        .why-button-body {
+          text-align: center;
+          padding-top: 2rem;
+        }
+
+        .why-button {
+          outline: 0;
+          background: #000;
+          text-decoration: none;
+          color: #ffffff;
+          padding: 0.8rem;
+          font-weight: bold;
+        }
+
+        .container2 {
+          padding-bottom: 5rem;
+          background-color: #f5f5f5;
+        }
+
+        .mobilehero2 {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          overflow: hidden;
+        }
+
+        .header2 {
+          display: flex;
+          flex-direction: column;
+          padding-left: 1rem;
+          margin-top: -3rem;
+        }
+
+        .title2 span {
+          display: block;
+          font-size: 3.7rem;
+          font-weight: 900;
+          letter-spacing: 0.1rem;
+          padding: 0;
+          margin: 0;
+          line-height: 1;
+        }
+
+        .hero-title-line2 {
+          text-align: left;
+        }
+
+        .hero-img2 {
+          width: 140%;
+        }
+
+        .contactlist {
+          list-style-type: none;
+          color: rgba(255, 255, 255, 0.484);
+        }
+
+        .contactlist li {
+          margin-top: 0.5rem;
+        }
+
+        .letsgetstarted {
+          color: #111;
+          background: #a2b3d4;
+          padding: 1rem;
+          outline: 0;
+          border: 0px;
+          font-size: 1rem;
+        }
+
+        .details3container {
+          background-color: #222;
+          height: 14rem;
+        }
+
+        .details3body {
+          height: 100%;
+          color: white;
+          padding-left: 1.8rem;
+          padding-right: 1.8rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3header {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3content {
+          display: flex;
+          flex-direction: column;
+          gap: 3rem;
+        }
+
+        .details3content h1 {
+          font-size: 2rem;
+          line-height: 1;
+          margin: auto;
+          font-weight: 400;
+          text-align: center;
+        }
+
+        .icons {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+        }
+        .icons a {
+          text-decoration: none;
+          color: white;
+        }
+
+        .details11container {
+          background-color: #000000;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          padding: 3rem 7rem 3rem;
+        }
+
+        .details11body {
+          display: flex;
+          flex-direction: column;
+          color: rgb(255, 255, 255);
+          opacity: 30%;
+          font-family: Arial, Helvetica, sans-serif;
+          gap: 1.5rem;
+          padding-bottom: 3rem;
+        }
+
+        .row h1 {
+          font-size: 1.3rem;
+        }
+
+        .row h1 a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .row {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .row:nth-child(2) {
+          align-items: center;
+          justify-content: space-around;
+        }
+
+        .footerimage {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .footerimage img {
+          width: 70%;
+        }
+
+        .details12container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: black;
+          padding-bottom: 2rem;
+        }
+
+        .details12container i {
+          color: white;
+          size: 3rem;
+        }
+
+        .details12container p {
+          color: white;
+          font-size: 1rem;
+        }
+
+        .services-list {
+          list-style-type: disc;
+          padding-top: 1.5rem;
+          padding-left: 2.5rem;
+          padding-right: 1rem;
+        }
+
+        .services-list li {
+          margin-bottom: 0.7rem;
+          font-size: 1.12rem;
+        }
+        #hero-img3 {
+          width: 125%;
+          margin-bottom: 5rem;
+        }
+        .hero-img4 {
+          width: 100%;
+          margin-bottom: 5rem;
+        }
+        .container3 {
+          padding-bottom: 5rem;
+          padding-top: 5rem;
+        }
+        .container4 {
+          background-color: #f5f5f5;
+          padding-bottom: 5rem;
+          padding-top: 5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <a href="/"
+            ><img
+              src="/assets/md logo white-01.png"
+              alt="MDS Technologies Logo"
+            />
+          </a>
+        </div>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="/home.html">WHO WE ARE</a></li>
+          <li><a href="/components/technologies.html">WHAT WE DO</a></li>
+          <li><a href="/components/services.html">WHY US</a></li>
+          <li><a href="/components/team.html">TEAM</a></li>
+          <li><a href="/components/contact.html">Contact</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbarToggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </button>
+      </div>
+    </nav>
+
+    <section class="hero-container">
+      <div class="hero-body">
+        <p class="hero-tagline">We make digital (and simple)...</p>
+        <h1 class="hero-title">
+          <h1 class="hero-title-line">BRANDING.</h1>
+          <h1 class="hero-title-line">PRODUCTS.</h1>
+          <h1 class="hero-title-line">EXPERIENCES.</h1>
+        </h1>
+        <div class="mobilehero">
+          <img
+            class="hero-img"
+            src="https://mds-new.s3.ap-south-1.amazonaws.com/heroimage.svg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="container2">
+      <div class="body2">
+        <div class="mobilehero2">
+          <img
+            class="hero-img2"
+            src="https://mdstudios.s3.ap-south-1.amazonaws.com/2ndpage.png"
+          />
+        </div>
+        <div class="header2">
+          <p>Where ideas meet experience</p>
+          <h1 class="title2">
+            <span class="hero-title-line2">YOUR VISION</span>
+            <span class="hero-title-line2">OUR BLUEPRINT</span>
+          </h1>
+        </div>
+        <ul class="services-list">
+          <li>
+            <strong> Client-Centered Vision:</strong> We take your ideas and
+            goals as the foundation of every project.
+          </li>
+          <li>
+            <strong>Strategic Blueprint:</strong>We craft a detailed, tailored
+            plan to bring your vision to life.
+          </li>
+          <li>
+            <strong>Collaboration:</strong> Working closely with you to ensure
+            alignment at every step.
+          </li>
+          <li>
+            <strong>Customized Solutions:</strong> Designing unique strategies
+            that meet your specific needs.
+          </li>
+          <li>
+            <strong>Execution Excellence:</strong> Turning your vision into
+            reality with precision and innovation.
+          </li>
+          <li>
+            <strong>Success-Oriented Approach:</strong> Focusing on delivering
+            impactful results that match your aspirations.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container3">
+      <div class="body2">
+        <div class="mobilehero2">
+          <img class="hero-img2" id="hero-img3" src="/assets/bold.png" />
+        </div>
+        <div class="header2">
+          <p>Building brands into</p>
+          <h1 class="title2">
+            <span class="hero-title-line2">BOLD DIGITAL</span>
+            <span class="hero-title-line2">EXPERIENCES</span>
+          </h1>
+        </div>
+        <ul class="services-list">
+          <li>
+            <strong> Brand Transformation:</strong> Elevating traditional brands
+            into cutting-edge digital platforms.
+          </li>
+          <li>
+            <strong>Immersive Experiences:</strong>Creating engaging,
+            interactive environments that draw users in.
+          </li>
+          <li>
+            <strong>Bold Creativity:</strong> Using innovative designs to make a
+            strong, memorable impression.
+          </li>
+          <li>
+            <strong>User Engagement:</strong> Building digital experiences that
+            captivate and connect with audiences.
+          </li>
+          <li>
+            <strong>Digital Innovation:</strong> everaging the latest
+            technologies to craft 6.seamless, modern experiences.
+          </li>
+          <li>
+            <strong>End-to-End Solutions:</strong> Offering comprehensive
+            digital strategies that enhance brand presence
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container4">
+      <div class="body2">
+        <div class="mobilehero2">
+          <img class="hero-img2 hero-img4" src="/assets/mug.png" />
+        </div>
+        <div class="header2">
+          <p>Your next big idea starts here</p>
+          <h1 class="title2">
+            <span class="hero-title-line2">SHALL WE BEGIN?</span>
+          </h1>
+        </div>
+        <ul class="services-list">
+          <li>
+            <strong>Inspiring Innovation:</strong> Encouraging you to kickstart
+            your next groundbreaking project with us.
+          </li>
+          <li>
+            <strong>Collaborative Partnership:</strong> Emphasizing our
+            readiness to co-create and develop your ideas.
+          </li>
+          <li>
+            <strong>Supportive Environment:</strong> Offering a platform for
+            brainstorming and turning concepts into action.
+          </li>
+          <li>
+            <strong>Vision to Reality:</strong> Guiding you from the initial
+            idea stage to a fully realized solution.
+          </li>
+          <li>
+            <strong>Bold Beginning:</strong> Inviting you to embark on an
+            exciting journey of innovation and success.
+          </li>
+          <li>
+            <strong>Action-Oriented:</strong> Asking the question, “Shall We
+            Begin?” to prompt immediate action and engagement.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <div>
+              <h1>FOLLOW MANDIN STUDIOS</h1>
+            </div>
+            <div class="icons">
+              <a
+                href="https://www.instagram.com/mandin_studios/"
+                target="_blank"
+                ><i class="fa-brands fa-instagram fa-3x"></i
+              ></a>
+              <a
+                href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance"
+                target="_blank"
+                ><i class="fa-brands fa-twitter fa-3x"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"
+                ><i class="fa-brands fa-linkedin fa-3x"></i
+              ></a>
+              <a href="https://medium.com/@md-studios" target="_blank"
+                ><i class="fa-brands fa-medium fa-3x"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="details11container">
+      <div class="details11body">
+        <div class="row">
+          <h1><a href="/home.html">WHO WE ARE</a></h1>
+          <h1><a href="/components/technologies.html">WHAT WE DO</a></h1>
+          <h1><a href="/components/services.html">WHY US</a></h1>
+        </div>
+        <div class="row">
+          <h1><a href="/components/team.html">TEAM</a></h1>
+          <h1><a href="/components/contact.html">CONTACT</a></h1>
+        </div>
+      </div>
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <div class="details12container" id="scrollToTopMobile">
+      <i class="fa-solid fa-chevron-up fa-2x"></i>
+      <p>UP</p>
+    </div>
+
+    <!-- <script>
+      // Get the button
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+      // When the user clicks on the button, scroll to the top of the document
+      scrollToTopBtn.onclick = function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // Smooth scrolling
+        });
+      };
+    </script> -->
+  </body>
+</html>

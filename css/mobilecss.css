@@ -1,0 +1,131 @@
+/* Mobile Navbar Styles */
+@media (max-width: 640px) {
+  .mobile-navbar {
+    display: block; /* Show on mobile */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-navbar {
+    display: block; /* Show on mobile */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-navbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .mobile-navbar-header img {
+    height: 2rem;
+  }
+
+  .mobile-menu-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    z-index: 1001;
+    overflow-y: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .mobile-menu-content {
+    padding: 2rem 1rem;
+  }
+
+  .mobile-menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .mobile-nav-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+
+  .mobile-nav-items li {
+    margin-bottom: 1rem;
+  }
+
+  .mobile-nav-items a {
+    display: block;
+    padding: 0.5rem 0;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-nav-items a:hover,
+  .mobile-nav-items a:focus {
+    color: #007bff;
+  }
+
+  .mobile-contact-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .mobile-contact-button:hover,
+  .mobile-contact-button:focus {
+    background-color: #0056b3;
+  }
+
+  /* Hide desktop navbar on mobile */
+  .navcontainer {
+    display: none;
+  }
+
+  /* Ensure content is pushed down on mobile */
+  .maincontainer {
+    padding-top: 4rem;
+  }
+}
+
+/* Explicitly hide mobile navbar on larger screens */
+@media (min-width: 769px) {
+  .mobile-navbar {
+    display: none !important;
+  }
+}

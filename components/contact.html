@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ManDin Contact</title>
+  <link rel="stylesheet" href="/css/contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body>
+  <div id="desktop-service">
+    <div class="navcontainer">
+      <div class="navbody">
+        <div class="logomain">
+          <a href="/"><img class="logo" src="https://mds-new.s3.ap-south-1.amazonaws.com/logo-01.png" /></a>
+        </div>
+        <div class="navright">
+          <ul class="navitems">
+            <li><a href="/home.html">WHO WE ARE</a></li>
+            <li><a href="/components/technologies.html">WHAT WE DO</a></li>
+            <li><a href="/components/services.html">WHY US</a></li>
+            <li><a href="/components/team.html">TEAM</a></li>
+          </ul>
+          <button class="navbutton" onclick="location.href='/components/contact.html';">
+            CONTACT US
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="gridcontainer">
+        <div class="contactimg">
+          <img src="/assets/Contact Images-01 (2).svg" />
+        </div>
+        <div class="formbody">
+          <div class="formcontainer">
+            <div class="contact">
+              <h1>Let's build something<br /><span>great together!</span></h1>
+            </div>
+
+            <div class="contact2">
+              <p>
+                Give us a nudge with the basics, and we’ll make magic happen!
+              </p>
+            </div>
+
+            <form id="form" onsubmit="submitForm(event)">
+              <div class="formcontent">
+                <label>First Name <span>*</span></label>
+                <input id="firstname" name="firstname" required />
+              </div>
+              <div class="formcontent">
+                <label>Last Name <span>*</span></label>
+                <input id="lastname" name="lastname" required />
+              </div>
+              <div class="formcontent">
+                <label>Email <span>*</span></label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div class="formcontent">
+                <label>Phone Number <span>*</span></label>
+                <input id="phonenumber" name="phonenumber" required />
+              </div>
+              <div>
+                <input id="submit" type="submit" value="Submit" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal">
+      <div id="modal-content">
+        <h2>Thank you for your submission!</h2>
+        <p>Your form has been submitted successfully.</p>
+      </div>
+    </div>
+
+    <div class="contact3">
+      <div class="contact33">
+        <p>Get in touch</p>
+      </div>
+
+      <div class="contactmail">
+        <div class="contact34">
+          <p>
+            <a href="mailto:info@mandinstudios.com">info@mandinstudios.com</a>
+          </p>
+          <p class="border"></p>
+          <p><a href="tel:+919115962222">+91 91159 62222</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <h1>FOLLOW MANDIN STUDIOS</h1>
+            <div class="icons">
+              <a href="https://www.instagram.com/mandin_studios/" target="_blank"><i
+                  class="fa-brands fa-instagram fa-3x"></i></a>
+              <a href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance" target="_blank"><i
+                  class="fa-brands fa-twitter fa-3x"></i></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"><i
+                  class="fa-brands fa-linkedin fa-3x"></i></a>
+              <a href="https://medium.com/@md-studios" target="_blank"><i class="fa-brands fa-medium fa-3x"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+
+    <div class="details11container">
+      <div class="details11body">
+        <div>
+          <a href="/home.html">
+            <h1>WHO WE ARE</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/technologies.html">
+            <h1>WHAT WE DO</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/services.html">
+            <h1>WHY US</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/team.html">
+            <h1>TEAM</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/contact.html">
+            <h1>CONTACT</h1>
+          </a>
+        </div>
+      </div>
+
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <!--  Back top button -->
+
+    <!-- Back to Top Button with PNG image -->
+    <button id="backToTopBtn" onclick="scrollToTop()">
+      <img src="/assets/up-arrow-01.png" alt="Back to Top" />
+    </button>
+
+    <div class="content"></div>
+  </div>
+
+  <div id="laptopContent">
+    <div class="navcontainer">
+      <div class="navbody">
+        <div class="logomain">
+          <a href="/"><img class="logo" src="https://mds-new.s3.ap-south-1.amazonaws.com/logo-01.png" /></a>
+        </div>
+        <div class="navright">
+          <ul class="navitems">
+            <li><a href="/home.html">WHO WE ARE</a></li>
+            <li><a href="/components/technologies.html">WHAT WE DO</a></li>
+            <li><a href="/components/services.html">WHY US</a></li>
+            <li><a href="/components/team.html">TEAM</a></li>
+          </ul>
+          <button class="navbutton" onclick="location.href='/components/contact.html';">
+            CONTACT US
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="gridcontainer">
+        <div class="contactimg">
+          <img src="/assets/Contact Images-01 (2).svg" />
+        </div>
+        <div class="formbody">
+          <div class="formcontainer">
+            <div class="contact">
+              <h1>Let's build something<br /><span>great together!</span></h1>
+            </div>
+
+            <div class="contact2">
+              <p>
+                Give us a nudge with the basics, and we’ll make magic happen!
+              </p>
+            </div>
+
+            <form id="form" onsubmit="submitForm(event)">
+              <div class="formcontent">
+                <label>First Name <span>*</span></label>
+                <input id="firstname" name="firstname" required />
+              </div>
+              <div class="formcontent">
+                <label>Last Name <span>*</span></label>
+                <input id="lastname" name="lastname" required />
+              </div>
+              <div class="formcontent">
+                <label>Email <span>*</span></label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div class="formcontent">
+                <label>Phone Number <span>*</span></label>
+                <input id="phonenumber" name="phonenumber" required />
+              </div>
+              <div>
+                <input id="submit" type="submit" value="Submit" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal">
+      <div id="modal-content">
+        <h2>Thank you for your submission!</h2>
+        <p>Your form has been submitted successfully.</p>
+      </div>
+    </div>
+
+    <div class="contact3">
+      <div class="contact33">
+        <p>Get in touch</p>
+      </div>
+
+      <div class="contactmail">
+        <div class="contact34">
+          <p>
+            <a href="mailto:info@mandinstudios.com">info@mandinstudios.com</a>
+          </p>
+          <p class="border"></p>
+          <p><a href="tel:+919115962222">+91 91159 62222</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <h1>FOLLOW MANDIN STUDIOS</h1>
+            <div class="icons">
+              <a href="https://www.instagram.com/mandin_studios/" target="_blank"><i
+                  class="fa-brands fa-instagram fa-3x"></i></a>
+              <a href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance" target="_blank"><i
+                  class="fa-brands fa-twitter fa-3x"></i></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"><i
+                  class="fa-brands fa-linkedin fa-3x"></i></a>
+              <a href="https://medium.com/@md-studios" target="_blank"><i class="fa-brands fa-medium fa-3x"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+
+    <div class="details11container">
+      <div class="details11body">
+        <div>
+          <a href="/home.html">
+            <h1>WHO WE ARE</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/technologies.html">
+            <h1>WHAT WE DO</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/services.html">
+            <h1>WHY US</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/team.html">
+            <h1>TEAM</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/contact.html">
+            <h1>CONTACT</h1>
+          </a>
+        </div>
+      </div>
+
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <!--  Back top button -->
+
+    <!-- Back to Top Button with PNG image -->
+    <button id="backToTopBtnLaptop" onclick="scrollToTop()">
+      <img src="/assets/up-arrow-01.png" alt="Back to Top" />
+    </button>
+  </div>
+
+  <div id="tabletContent">
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <a href="/"><img src="/assets/md logo white-01.png" alt="MDS Technologies Logo" />
+          </a>
+        </div>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="/home.html">WHO WE ARE</a></li>
+          <li><a href="/components/technologies.html">WHAT WE DO</a></li>
+          <li><a href="/components/services.html">WHY US</a></li>
+          <li><a href="/components/team.html">TEAM</a></li>
+          <li><a href="/components/contact.html">Contact</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbarToggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </button>
+      </div>
+    </nav>
+
+    <div class="contactimg">
+      <img src="/assets/Contact Images-01 (2).svg" />
+    </div>
+
+    <div class="contact">
+      <h1>
+        Let's build something <br />
+        <span>great together</span>
+      </h1>
+    </div>
+
+    <div class="contact2">
+      <p>Give us a nudge with the basics, and we’ll make magic happen!</p>
+    </div>
+
+    <div class="formcontainer">
+      <form id="form" onsubmit="submitForm(event)">
+        <div class="formcontent">
+          <label>First Name <span>*</span></label>
+          <input id="firstname" name="firstname" required />
+        </div>
+        <div class="formcontent">
+          <label>Last Name <span>*</span></label>
+          <input id="lastname" name="lastname" required />
+        </div>
+        <div class="formcontent">
+          <label>Email <span>*</span></label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="formcontent">
+          <label>Phone Number <span>*</span></label>
+          <input id="phonenumber" name="phonenumber" required />
+        </div>
+        <div>
+          <input id="submit" type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
+
+    <div id="modal">
+      <div id="modal-content">
+        <h2>Thank you for your submission!</h2>
+        <p>Your form has been submitted successfully.</p>
+      </div>
+    </div>
+
+    <div class="contact3">
+      <div class="contact33">
+        <p>Get in touch</p>
+      </div>
+
+      <div class="contactmail">
+        <div class="contact34">
+          <p>
+            <a href="mailto:info@mandinstudios.com">info@mandinstudios.com</a>
+          </p>
+          <p class="border"></p>
+          <p><a href="tel:+919115962222">+91 91159 62222</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <div>
+              <h1>FOLLOW MANDIN STUDIOS</h1>
+            </div>
+            <div class="icons">
+              <a href="https://www.instagram.com/mandin_studios/" target="_blank"><i
+                  class="fa-brands fa-instagram fa-3x"></i></a>
+              <a href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance" target="_blank"><i
+                  class="fa-brands fa-twitter fa-3x"></i></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"><i
+                  class="fa-brands fa-linkedin fa-3x"></i></a>
+              <a href="https://medium.com/@md-studios" target="_blank"><i class="fa-brands fa-medium fa-3x"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="details11container">
+      <div class="details11body">
+        <div class="row">
+          <h1><a href="/home.html">WHO WE ARE</a></h1>
+          <h1><a href="/components/technologies.html">WHAT WE DO</a></h1>
+          <h1><a href="/components/services.html">WHY US</a></h1>
+        </div>
+        <div class="row">
+          <h1><a href="/components/team.html">TEAM</a></h1>
+          <h1><a href="/components/contact.html">CONTACT</a></h1>
+        </div>
+      </div>
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <div class="details12container" id="scrollToTopMobile">
+      <i class="fa-solid fa-chevron-up fa-2x"></i>
+      <p>UP</p>
+    </div>
+  </div>
+
+  <div id="mobileContent">
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <a href="/"><img src="/assets/md logo white-01.png" alt="MDS Technologies Logo" />
+          </a>
+        </div>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="/home.html">WHO WE ARE</a></li>
+          <li><a href="/components/services.html">WHAT WE DO</a></li>
+          <li><a href="/components/technologies.html">WHY US</a></li>
+          <li><a href="/components/team.html">TEAM</a></li>
+          <li><a href="/components/contact.html">CONTACT</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbarToggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </button>
+      </div>
+    </nav>
+
+    <div class="contactimg">
+      <img src="/assets/Contact Images-01 (2).svg" />
+    </div>
+
+    <div class="contact">
+      <h1>
+        Let's build something <br />
+        <span>great together</span>
+      </h1>
+    </div>
+
+    <div class="contact2">
+      <p>Give us a nudge with the basics, and we’ll make magic happen!</p>
+    </div>
+
+    <div class="formcontainer">
+      <form id="form" onsubmit="submitForm(event)">
+        <div class="formcontent">
+          <label>First Name <span>*</span></label>
+          <input id="firstname" name="firstname" required />
+        </div>
+        <div class="formcontent">
+          <label>Last Name <span>*</span></label>
+          <input id="lastname" name="lastname" required />
+        </div>
+        <div class="formcontent">
+          <label>Email <span>*</span></label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="formcontent">
+          <label>Phone Number <span>*</span></label>
+          <input id="phonenumber" name="phonenumber" required />
+        </div>
+        <div>
+          <input id="submit" type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
+
+    <div id="modal">
+      <div id="modal-content">
+        <h2>Thank you for your submission!</h2>
+        <p>Your form has been submitted successfully.</p>
+      </div>
+    </div>
+
+    <div class="contact3">
+      <div class="contact33">
+        <p>Get in touch</p>
+      </div>
+
+      <div class="contactmail">
+        <div class="contact34">
+          <p>
+            <a href="mailto:info@mandinstudios.com">info@mandinstudios.com</a>
+          </p>
+          <p class="border"></p>
+          <p><a href="tel:+919115962222">+91 91159 62222</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <div>
+              <h1>FOLLOW MANDIN STUDIOS</h1>
+            </div>
+            <div class="icons">
+              <a href="https://www.instagram.com/mandin_studios/" target="_blank"><i
+                  class="fa-brands fa-instagram fa-2x"></i></a>
+              <a href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance" target="_blank"><i
+                  class="fa-brands fa-twitter fa-2x"></i></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"><i
+                  class="fa-brands fa-linkedin fa-2x"></i></a>
+              <a href="https://medium.com/@md-studios" target="_blank"><i class="fa-brands fa-medium fa-2x"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="details11container">
+      <div class="details11body">
+        <div class="row">
+          <h1><a href="/home.html">WHO WE ARE</a></h1>
+          <h1><a href="/components/technologies.html">WHAT WE DO</a></h1>
+          <h1><a href="/components/services.html">WHY US</a></h1>
+        </div>
+        <div class="row">
+          <h1><a href="/components/team.html">TEAM</a></h1>
+          <h1><a href="/components/contact.html">CONTACT</a></h1>
+        </div>
+      </div>
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <div class="details12container" id="scrollToTopMobile">
+      <i class="fa-solid fa-chevron-up fa-1x"></i>
+      <p>UP</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      initializeMobileMenu();
+
+      document.getElementById("scrollToTopMobile").addEventListener('click', scrollToTop);
+      document.getElementById("backToTopBtnLaptop").addEventListener('click', scrollToTop);
+    });
+
+    function initializeMobileMenu() {
+      const navbarMenu = document.getElementById("navbarMenu");
+      const navbarToggle = document.getElementById("navbarToggle");
+
+      if (navbarMenu && navbarToggle) {
+        navbarToggle.addEventListener("click", function () {
+          navbarMenu.classList.toggle("active");
+          navbarToggle.classList.toggle("active");
+        });
+      }
+    }
+    
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      // Submit your form logic here
+
+      // Show modal after successful submission
+      document.getElementById('modal').style.display = 'block';
+    }
+
+  </script>
+
+</body>
+
+</html>

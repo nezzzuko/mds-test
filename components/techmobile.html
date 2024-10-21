@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <title>MDS Technologies - Elegant Navbar</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+      body {
+        font-family: "Open Sans";
+        background-color: #ffffff;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --primary-color: #000;
+        --secondary-color: #000;
+        --text-color: #ecf0f1;
+        --transition-speed: 0.3s;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .navbar-menu {
+        display: flex;
+        list-style-type: none;
+      }
+
+      .navbar-menu li {
+        margin-left: 2rem;
+      }
+
+      .navbar-menu a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color var(--transition-speed) ease;
+        position: relative;
+      }
+
+      .navbar-menu a:hover::after {
+        width: 100%;
+      }
+
+      .navbar-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        background-color: black;
+      }
+
+      .navbar-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        margin: 5px auto;
+        transition: all var(--transition-speed) ease-in-out;
+      }
+
+      #path1 {
+        stroke-dasharray: 4000;
+        stroke-dashoffset: 4000;
+        animation: dash 10s linear alternate infinite;
+      }
+
+      @keyframes dash {
+        from {
+          stroke-dashoffset: 4000;
+        }
+
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          background-color: black;
+          padding: 0.5rem 2rem;
+          position: sticky;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          height: 100px;
+        }
+
+        .navbar-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .navbar-logo {
+          height: 100px;
+        }
+
+        .navbar-logo img {
+          height: 100px;
+          width: 100%;
+        }
+
+        .navbar-menu {
+          position: fixed;
+          top: 100px;
+          left: -100%;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          transition: left var(--transition-speed) ease-in-out;
+          background-color: black;
+        }
+
+        .navbar-menu.active {
+          left: 0;
+        }
+
+        .navbar-menu li {
+          margin: 1.5rem 0;
+        }
+
+        .navbar-toggle {
+          display: block;
+        }
+
+        .navbar-toggle.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .navbar-toggle.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .navbar-toggle.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .tech-img {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+        }
+
+        .tech-img img {
+          width: 125%;
+        }
+        .rocket{
+          padding-top: 3rem;
+        }
+
+        .tech-img .web3 {
+          width: 120%;
+        }
+        .tech-img .cyber {
+          width: 90%;
+        }
+        .tech-img .finance {
+          width: 90%;
+        }
+        .tech-img .ui {
+          width: 90%;
+        }
+        .tech-img .coding {
+          width: 100%;
+        }
+
+        .services1container {
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+
+        .services1content {
+          text-align: left;
+          padding-left: 1rem;
+          padding-top: 2rem;
+
+        }
+
+        .services1content h2 {
+          font-weight: 900;
+          font-size: 2.8rem;
+          line-height: 1;
+        }
+
+        .services1content p {
+          margin-top: 0.5rem;
+          padding: 0 1rem 0 0;
+          text-align: justify;
+        }
+
+        .services2content h2,
+        .services9content h2 {
+          font-size: 2.5rem;
+          font-weight: 800;
+          text-align: left;
+          padding: 0;
+          margin: 0;
+          line-height: 1;
+          padding-left: 1rem;
+        }
+        .services4content h2 {
+          font-size: 2.5rem;
+          text-align: left;
+          padding: 0;
+          margin: 0;
+          line-height: 1;
+          padding-left: 1rem;
+          font-weight: 800;
+        }
+
+        .services-list {
+          padding-top: 1rem;
+          padding-left: 2.2rem;
+          padding-right: 1.5rem;
+        }
+
+        .services-list li {
+          margin-bottom: 0.7rem;
+        }
+
+        .services {
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        }
+
+        .contactlist {
+          list-style-type: none;
+          color: rgba(255, 255, 255, 0.484);
+        }
+
+        .contactlist li {
+          margin-top: 0.5rem;
+        }
+
+        .letsgetstarted {
+          color: #111;
+          background: #a2b3d4;
+          padding: 1rem;
+          outline: 0;
+          border: 0px;
+          font-size: 1rem;
+        }
+
+        .details3container {
+          background-color: #222;
+          height: 14rem;
+        }
+
+        .details3body {
+          height: 100%;
+          color: white;
+          padding-left: 1.8rem;
+          padding-right: 1.8rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3header {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3content {
+          display: flex;
+          flex-direction: column;
+          gap: 3rem;
+        }
+
+        .details3content h1 {
+          font-size: 1.5rem;
+          line-height: 1;
+          margin: auto;
+          font-weight: 400;
+          text-align: center;
+        }
+
+        .icons {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+        }
+        .icons a {
+          text-decoration: none;
+          color: white;
+        }
+
+        .details11container {
+          background-color: #000000;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          padding: 3rem 2rem 3rem;
+        }
+
+        .details11body {
+          display: flex;
+          flex-direction: column;
+          color: rgb(255, 255, 255);
+          opacity: 30%;
+          font-family: Arial, Helvetica, sans-serif;
+          gap: 1rem;
+          padding-bottom: 3rem;
+        }
+
+        .row h1 {
+          font-size: 0.9rem;
+        }
+
+        .row h1 a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .row {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .row:nth-child(2) {
+          align-items: center;
+          justify-content: space-around;
+        }
+
+        .footerimage {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .footerimage img {
+          width: 70%;
+        }
+
+        .details12container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: black;
+          padding-bottom: 2rem;
+        }
+
+        .details12container i {
+          color: white;
+          size: 3rem;
+        }
+
+        .details12container p {
+          color: white;
+          font-size: 0.7rem;
+        }
+        .services2container {
+          height: 100%;
+          background-color: #f5f5f5;
+        }
+        .services2body,
+        .services4body,
+        .services9body {
+          margin-top: 2rem;
+          text-align: left;
+        }
+        .services1body {
+          margin-top: -3.2rem;
+        }
+        .services10container {
+          background-color: #f5f5f5;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <a href="/"
+            ><img
+              src="/assets/md logo white-01.png"
+              alt="MDS Technologies Logo"
+            />
+          </a>
+        </div>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="/home.html">WHO WE ARE</a></li>
+          <li><a href="/components/technologies.html">WHAT WE DO</a></li>
+          <li><a href="/components/services.html">WHY US</a></li>
+          <li><a href="/components/team.html">TEAM</a></li>
+          <li><a href="/components/contact.html">Contact</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbarToggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </button>
+      </div>
+    </nav>
+
+    <div class="services1container services">
+      <div class="services1body">
+        <div class="services1content">
+          <h2>YOUR IDEAS</h2>
+          <h2>OUR CRAFTS</h2>
+          <p>
+            We bring your ideas to life with precision and creativity, turning
+            vision into expertly crafted results.
+          </p>
+        </div>
+      </div>
+      <div class="tech-img">
+        <img class="rocket" src="/assets/rocket2.png" />
+      </div>
+    </div>
+
+    <div class="services2container services">
+      <div class="tech-img">
+        <img class="coding" src="../assets/coding.png" />
+      </div>
+      <div class="services2body">
+        <div class="services2content">
+          <h2>WEB DEVELOPMENT</h2>
+          <ul class="services-list">
+            <li>
+              <strong>Tailored Solutions:</strong> We don't do
+              one-size-fits-all. Every website we build is custom-designed to
+              reflect your brand and business goals.
+            </li>
+            <li>
+              <strong>Performance-Driven:</strong> Our websites are built with
+              speed, SEO, and user experience in mind to ensure that your
+              audience stays engaged.
+            </li>
+            <li>
+              <strong>Full-Stack Expertise:</strong> From front-end beauty to
+              back-end power, our team covers it all, offering end-to-end
+              development services.
+            </li>
+            <li>
+              <strong>Responsive Design:</strong> We ensure your site works
+              seamlessly across all devices, providing a great user experience
+              on desktops, tablets, and mobile.
+            </li>
+            <li>
+              <strong>Continuous Support:</strong> Our relationship doesn't end
+              when the website launches. We provide ongoing support and updates
+              to keep your site current and secure.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="services4container services">
+      <div class="tech-img">
+        <img class="finance" src="../assets/Finance WEb Dev-01 (1).svg" />
+      </div>
+      <div class="services4body">
+        <div class="services4content">
+          <h2>FINANCE WEB APP DEVELOPMENT</h2>
+          <!-- <h3>Why Choose Us for Finance Web App Development?</h3> -->
+          <ul class="services-list">
+            <li>
+              <strong>Industry Expertise:</strong> We understand the specific
+              needs of the financial sector, from regulatory compliance to
+              security best practices.
+            </li>
+            <li>
+              <strong>Security-First Approach:</strong> We integrate advanced
+              security measures, such as encryption and multi-factor
+              authentication, to ensure your financial app is fortified against
+              cyber threats.
+            </li>
+            <li>
+              <strong>Real-Time Performance:</strong> Our finance apps are built
+              to process data quickly and reliably, ensuring you and your users
+              can make informed decisions instantly.
+            </li>
+            <li>
+              <strong>Regulatory Compliance:</strong> We ensure that your
+              financial app is fully compliant with industry standards, such as
+              PCI DSS, ensuring trust and legal safety.
+            </li>
+            <li>
+              <strong>Scalability:</strong> Whether you’re building for a local
+              startup or an international firm, we create solutions that grow
+              with your business.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="services2container services">
+      <div class="tech-img">
+        <img class="cyber" src="../assets/IMAGES 23-01.svg" />
+      </div>
+      <div class="services2body">
+        <div class="services2content">
+          <h2>CYBER SECURITY</h2>
+          <ul class="services-list">
+            <li>
+              <strong>Tailored Solutions:</strong> We don't do
+              one-size-fits-all. Every website we build is custom-designed to
+              reflect your brand and business goals.
+            </li>
+            <li>
+              <strong>Performance-Driven:</strong> Our websites are built with
+              speed, SEO, and user experience in mind to ensure that your
+              audience stays engaged.
+            </li>
+            <li>
+              <strong>Full-Stack Expertise:</strong> From front-end beauty to
+              back-end power, our team covers it all, offering end-to-end
+              development services.
+            </li>
+            <li>
+              <strong>Responsive Design:</strong> We ensure your site works
+              seamlessly across all devices, providing a great user experience
+              on desktops, tablets, and mobile.
+            </li>
+            <li>
+              <strong>Continuous Support:</strong> Our relationship doesn't end
+              when the website launches. We provide ongoing support and updates
+              to keep your site current and secure.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="services9container services">
+      <div class="tech-img">
+        <img class="web3" src="../assets/Web3-01 (1).svg" />
+      </div>
+      <div class="services9body">
+        <div class="services9content">
+          <h2>WEB3 SOLUTIONS</h2>
+          <ul class="services-list">
+            <li>
+              <strong>Pioneers in Blockchain:</strong> Our team has deep
+              expertise in the world of decentralized apps, smart contracts, and
+              blockchain development.
+            </li>
+            <li>
+              <strong>Future-Ready Solutions:</strong>We help you navigate the
+              emerging Web3 ecosystem, from developing dApps to creating NFTs,
+              ensuring your business is ready for the next generation of the
+              internet.
+            </li>
+            <li>
+              <strong>Custom Smart Contracts:</strong> We develop smart
+              contracts that are tailored to your project’s specific needs,
+              ensuring efficiency, security, and transparency.
+            </li>
+            <li>
+              <strong>Security by Design:</strong> We understand the importance
+              of security in decentralized systems and integrate cutting-edge
+              security protocols into every solution.
+            </li>
+            <li>
+              <strong>End-to-End Solutions:</strong> From ideation to execution,
+              we provide comprehensive Web3 services, including blockchain
+              consulting, development, and ongoing maintenance.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="services10container services">
+      <div class="tech-img">
+        <img class="ui" src="../assets/IMAG2-01.svg" />
+      </div>
+      <div class="services9body">
+        <div class="services9content">
+          <h2>UI/UX DESIGN</h2>
+          <ul class="services-list">
+            <li>
+              <strong>User-Centered Design:</strong> Focusing on creating
+              intuitive, user-friendly experiences tailored to meet user needs.
+            </li>
+            <li>
+              <strong>Responsive Design:</strong>Ensuring the interface adapts
+              seamlessly across devices and screen sizes.
+            </li>
+            <li>
+              <strong>Functionality & Usability:</strong>Prioritizing practical
+              features and efficient performance for optimal user satisfaction.
+            </li>
+            <li>
+              <strong>Consistency:</strong> Maintaining uniform design elements
+              for a cohesive and familiar experience across the platform.
+            </li>
+            <li>
+              <strong>Interaction Design:</strong> Creating engaging and dynamic
+              elements that improve interaction and boost user engagement.
+            </li>
+            <li>
+              <strong>User Feedback Integration:</strong> Continuously improving
+              the design based on real-world user feedback and behavior
+              analysis.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <div>
+              <h1>FOLLOW MANDIN STUDIOS</h1>
+            </div>
+            <div class="icons">
+              <a
+                href="https://www.instagram.com/mandin_studios/"
+                target="_blank"
+                ><i class="fa-brands fa-instagram fa-3x"></i
+              ></a>
+              <a
+                href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance"
+                target="_blank"
+                ><i class="fa-brands fa-twitter fa-3x"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"
+                ><i class="fa-brands fa-linkedin fa-3x"></i
+              ></a>
+              <a href="https://medium.com/@md-studios" target="_blank"
+                ><i class="fa-brands fa-medium fa-3x"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="details11container">
+      <div class="details11body">
+        <div class="row">
+          <h1><a href="/home.html">WHO WE ARE</a></h1>
+          <h1><a href="/components/technologies.html">WHAT WE DO</a></h1>
+          <h1><a href="/components/services.html">WHY US</a></h1>
+        </div>
+        <div class="row">
+          <h1><a href="/components/team.html">TEAM</a></h1>
+          <h1><a href="/components/contact.html">CONTACT</a></h1>
+        </div>
+      </div>
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <div class="details12container" id="scrollToTopMobile">
+      <i class="fa-solid fa-chevron-up fa-1x"></i>
+      <p>UP</p>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navbarMenu = document.getElementById("navbarMenu");
+        const navbarToggle = document.getElementById("navbarToggle");
+
+        navbarToggle.addEventListener("click", function () {
+          navbarMenu.classList.toggle("active");
+          navbarToggle.classList.toggle("active");
+        });
+
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.style.backgroundColor = "black";
+          } else {
+            navbar.style.backgroundColor = "black";
+          }
+        });
+      });
+    </script>
+    <!-- <script>
+      // Get the button
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+
+      // When the user clicks on the button, scroll to the top of the document
+      scrollToTopBtn.onclick = function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // Smooth scrolling
+        });
+      };
+    </script> -->
+  </body>
+</html>

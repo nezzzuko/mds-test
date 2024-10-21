@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <title>ManDin Studios</title>
+    <link
+      rel="icon"
+      href="https://mdstudios.s3.ap-south-1.amazonaws.com/logo2.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      @media (min-width: 1025px) and (max-width: 1280px) {
+        .logomain {
+          height: 100px;
+        }
+
+        .logo {
+          width: 100%;
+          height: 100%;
+        }
+
+        /* CSS */
+        .navitems {
+          list-style: none;
+          display: flex;
+          gap: 2rem;
+          font-size: 1.12rem;
+          position: relative;
+        }
+
+        .navcontainer {
+          height: 100px;
+          background-color: #f5f5f5;
+        }
+
+        .navbody {
+          padding-left: 2rem;
+          padding-right: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transition: opacity 1s ease-in;
+        }
+
+        .navright {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .navbutton {
+          color: #ffffff;
+          background: black;
+          padding-right: 1rem;
+          padding-left: 1rem;
+          outline: 0;
+          border: 0px;
+          font-size: 1rem;
+          white-space: nowrap;
+          transition: opacity 1s ease-in;
+          text-decoration: no;
+          cursor: pointer;
+        }
+
+        /* Hover effect for button */
+        .navbutton:hover {
+          background-color: #a2b3d4;
+          /* Change background color on hover */
+          color: #ffffff;
+        }
+
+        .navitems a {
+          position: relative;
+          display: inline-block;
+          text-decoration: none !important;
+          /* Ensure underline is removed */
+          color: black;
+          /* Set the desired color */
+          transition: color 0.3s;
+          /* Optional: for hover effect */
+        }
+
+        /* Global style for all anchor tags to prevent underline */
+        a {
+          text-decoration: none;
+          /* Remove underline globally */
+          color: black;
+          /* Consistent text color */
+          text-wrap: nowrap;
+        }
+
+        /* Hover underline effect using ::after pseudo-element */
+        .navitems a::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -5px;
+          /* Distance from text */
+          width: 100%;
+          height: 2px;
+          /* Thickness of the underline */
+          background-color: #a2b3d4;
+          /* Color of the underline */
+          transform: scaleX(0);
+          /* Start hidden */
+          transform-origin: bottom right;
+          /* Starting point of the underline */
+          transition: transform 0.3s ease-out;
+          /* Smooth transition */
+        }
+
+        .navitems a:hover::after {
+          transform: scaleX(1);
+          /* Scale underline to full width */
+          transform-origin: bottom left;
+          /* Ending point of the underline */
+        }
+
+        .navright {
+          display: flex;
+          gap: 2rem;
+        }
+
+        a {
+          color: black;
+          cursor: pointer;
+          position: relative;
+          transition: color 0.3s ease-in;
+          /* Smooth color change */
+          text-decoration: none;
+          /* Ensure no default underline */
+        }
+
+        .details3container {
+          background-color: #222;
+          height: 20rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3body {
+          height: 100%;
+          color: white;
+          padding-left: 7rem;
+          padding-right: 7rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3header {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .details3content {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 3rem;
+        }
+
+        .details3content h1 {
+          font-size: 3rem;
+          line-height: 1;
+          margin: auto;
+          font-weight: 400;
+        }
+
+        .details10container {
+          background-color: black;
+          height: 12rem;
+        }
+
+        .details10body {
+          color: white;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details10header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4rem;
+        }
+
+        .letsgetstarted {
+          color: #111;
+          background: #a2b3d4;
+          padding: 1rem;
+          outline: 0;
+          border: 0px;
+          font-size: 1.2rem;
+        }
+
+        .details11container {
+          background-color: #000000;
+          font-size: 1rem;
+        }
+
+        .details11body {
+          color: rgb(255, 255, 255);
+          padding: 5rem;
+          padding: 3rem 0 3rem;
+          display: flex;
+          justify-content: center;
+          gap: 5rem;
+          font-size: 10px;
+          opacity: 30%;
+          font-weight: 400;
+        }
+
+        .details11body a {
+          color: inherit;
+        }
+
+        .icons {
+          gap: 90px;
+          display: flex;
+          justify-content: center;
+          color: white;
+        }
+
+        .icons a {
+          text-decoration: none;
+          cursor: pointer;
+          color: white;
+          transition: none;
+        }
+
+        .icons a:hover {
+          text-decoration: none;
+        }
+
+        .footerimage {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 0rem;
+        }
+
+        .footerimage img {
+          width: 30%;
+        }
+
+        #backToTopBtn {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          display: none;
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          z-index: 1000;
+          transition: opacity 0.3s, transform 0.3s;
+        }
+
+        #backToTopBtn img {
+          width: 80px;
+        }
+
+        #backToTopBtn.show {
+          display: block;
+        }
+
+        #backToTopBtn.fade-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        #backToTopBtn.fade-out {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        #backToTopBtn:hover {
+          transform: scale(1.1);
+        }
+
+        .contact {
+          margin: 0;
+          padding: 0;
+          padding-top: 0rem;
+          padding-left: 0rem;
+        }
+
+        .contact h1 {
+          font-size: 3.5rem;
+          font-weight: 500;
+          margin: 0;
+          padding: 0;
+          line-height: 1;
+        }
+
+        .contact h1 span {
+          font-weight: 700;
+        }
+
+        .contact2 {
+          padding-top: 1.5rem;
+        }
+
+        .contact2 p {
+          font-size: 1.2rem;
+          font-weight: 700;
+          margin: 0;
+          padding: 0;
+        }
+
+        .main {
+          height: auto;
+          padding: 0 5% 0 0;
+        }
+
+        .gridcontainer {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+        }
+
+        .formcontainer {
+          padding: 3rem 0 3rem;
+        }
+
+        .formbody {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .formcontent {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-bottom: 1.2rem;
+        }
+
+        .formcontent label {
+          font-size: 1.1rem;
+        }
+
+        .formcontent label span {
+          color: red;
+        }
+
+        .formcontent input {
+          height: 3.5rem;
+          padding-left: 0.5rem;
+          font-size: 1.1rem;
+          font-weight: 500;
+          background: transparent;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          /* Light black border */
+          transition: border-color 0.3s;
+        }
+
+        .formcontent input:focus {
+          border-color: rgba(0, 0, 0, 0.3);
+          /* Darker border on focus */
+          outline: none;
+          /* Remove default focus outline */
+        }
+
+        #submit {
+          padding: 1rem 3rem 1rem;
+          font-size: 1.2rem;
+          background-color: black;
+          color: white;
+          outline: 0;
+          border: 0;
+        }
+
+        #form {
+          padding-top: 2rem;
+        }
+
+        .contact3 {
+          background-color: black;
+          color: white;
+          text-align: center;
+          padding: 1rem 0 1rem;
+          font-size: 1.2rem;
+        }
+
+        .contact33 {
+          margin-left: 4%;
+        }
+
+        .contact34 p a {
+          color: white;
+          cursor: pointer;
+        }
+
+        .contact34 {
+          display: flex;
+          align-items: center;
+          gap: 3rem;
+        }
+
+        .contactmail {
+          display: flex;
+          justify-content: center;
+        }
+
+        .border {
+          border: 1px solid white;
+          height: 2rem;
+        }
+        #modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1000; /* Sit on top */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+        }
+
+        #modal-content {
+          background-color: #fefefe;
+          margin: 15% auto; /* 15% from the top and centered */
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%; /* Could be more or less, depending on screen size */
+          max-width: 500px; /* Max width */
+          border-radius: 5px; /* Rounded corners */
+          text-align: center;
+          opacity: 1; /* Start fully visible */
+          transition: opacity 0.5s ease; /* Transition for fade-out */
+        }
+
+        #close-modal {
+          cursor: pointer;
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+        #close-modal:hover,
+        #close-modal:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        /* Class to fade out */
+        .fade-out {
+          opacity: 0; /* Set opacity to 0 for fade-out */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navcontainer">
+      <div class="navbody">
+        <div class="logomain">
+          <a href="/"
+            ><img
+              class="logo"
+              src="https://mds-new.s3.ap-south-1.amazonaws.com/logo-01.png"
+          /></a>
+        </div>
+        <div class="navright">
+          <ul class="navitems">
+            <li><a href="/home.html">WHO WE ARE</a></li>
+            <li><a href="/components/technologies.html">WHAT WE DO</a></li>
+            <li><a href="/components/services.html">WHY US</a></li>
+            <li><a href="/components/team.html">TEAM</a></li>
+          </ul>
+          <button
+            class="navbutton"
+            onclick="location.href='/components/contact.html';"
+          >
+            CONTACT US
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="gridcontainer">
+        <div class="contactimg">
+          <img src="/assets/Contact Images-01 (2).svg" />
+        </div>
+        <div class="formbody">
+          <div class="formcontainer">
+            <div class="contact">
+              <h1>Let's build something<br /><span>great together!</span></h1>
+            </div>
+
+            <div class="contact2">
+              <p>
+                Give us a nudge with the basics, and we’ll make magic happen!
+              </p>
+            </div>
+
+            <form id="form" onsubmit="submitForm(event)">
+              <div class="formcontent">
+                <label>First Name <span>*</span></label>
+                <input id="firstname" name="firstname" required />
+              </div>
+              <div class="formcontent">
+                <label>Last Name <span>*</span></label>
+                <input id="lastname" name="lastname" required />
+              </div>
+              <div class="formcontent">
+                <label>Email <span>*</span></label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div class="formcontent">
+                <label>Phone Number <span>*</span></label>
+                <input id="phonenumber" name="phonenumber" required />
+              </div>
+              <div>
+                <input id="submit" type="submit" value="Submit" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal">
+      <div id="modal-content">
+        <h2>Thank you for your submission!</h2>
+        <p>Your form has been submitted successfully.</p>
+      </div>
+    </div>
+
+    <div class="contact3">
+      <div class="contact33">
+        <p>Get in touch</p>
+      </div>
+
+      <div class="contactmail">
+        <div class="contact34">
+          <p>
+            <a href="mailto:info@mandinstudios.com">info@mandinstudios.com</a>
+          </p>
+          <p class="border"></p>
+          <p><a href="tel:+919115962222">+91 91159 62222</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <h1>FOLLOW MANDIN STUDIOS</h1>
+            <div class="icons">
+              <a
+                href="https://www.instagram.com/mandin_studios/"
+                target="_blank"
+                ><i class="fa-brands fa-instagram fa-3x"></i
+              ></a>
+              <a
+                href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance"
+                target="_blank"
+                ><i class="fa-brands fa-twitter fa-3x"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"
+                ><i class="fa-brands fa-linkedin fa-3x"></i
+              ></a>
+              <a href="https://medium.com/@md-studios" target="_blank"
+                ><i class="fa-brands fa-medium fa-3x"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+
+    <div class="details11container">
+      <div class="details11body">
+        <div>
+          <a href="/home.html">
+            <h1>WHO WE ARE</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/technologies.html">
+            <h1>WHAT WE DO</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/services.html">
+            <h1>WHY US</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/team.html">
+            <h1>TEAM</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/contact.html">
+            <h1>CONTACT</h1>
+          </a>
+        </div>
+      </div>
+
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <!--  Back top button -->
+
+    <!-- Back to Top Button with PNG image -->
+    <button id="backToTopBtn" onclick="scrollToTop()">
+      <img src="/assets/up-arrow-01.png" alt="Back to Top" />
+    </button>
+
+    <div class="content"></div>
+    <!--  Back top button -->
+    <script>
+      window.onscroll = function () {
+        toggleBackToTopButton();
+      };
+
+      function toggleBackToTopButton() {
+        const backToTopBtn = document.getElementById("backToTopBtn");
+        if (
+          document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100
+        ) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      }
+
+      // Scroll back to top smoothly
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navRight = document.querySelector(".navright");
+
+        hamburger.addEventListener("click", function () {
+          hamburger.classList.toggle("active");
+          navRight.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".navitems a").forEach((link) => {
+          link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navRight.classList.remove("active");
+          });
+        });
+      });
+      const backToTopBtn = document.getElementById("backToTopBtn");
+
+      function toggleButtonVisibility() {
+        if (window.pageYOffset > 300) {
+          if (!backToTopBtn.classList.contains("show")) {
+            backToTopBtn.classList.add("show");
+            setTimeout(() => {
+              backToTopBtn.classList.add("fade-in");
+            }, 10);
+          }
+        } else {
+          backToTopBtn.classList.remove("fade-in");
+          backToTopBtn.classList.add("fade-out");
+          setTimeout(() => {
+            backToTopBtn.classList.remove("show", "fade-out");
+          }, 300);
+        }
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      window.addEventListener("scroll", toggleButtonVisibility);
+      backToTopBtn.addEventListener("click", scrollToTop);
+
+      document
+        .querySelector(".menu-icon")
+        .addEventListener("click", function () {
+          this.classList.toggle("active");
+          document.querySelector(".navitems").classList.toggle("active");
+        });
+    </script>
+  </body>
+</html>

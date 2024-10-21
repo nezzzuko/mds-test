@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/servicesmobile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --primary-color: #000;
+        --secondary-color: #000;
+        --text-color: #ecf0f1;
+        --transition-speed: 0.3s;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar-menu {
+        display: flex;
+        list-style-type: none;
+      }
+
+      .navbar-menu li {
+        margin-left: 2rem;
+      }
+
+      .navbar-menu a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color var(--transition-speed) ease;
+        position: relative;
+      }
+
+      .navbar-menu a:hover::after {
+        width: 100%;
+      }
+
+      .navbar-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        background-color: black;
+      }
+
+      .navbar-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        margin: 5px auto;
+        transition: all var(--transition-speed) ease-in-out;
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          background-color: black;
+          padding: 0.5rem 2rem;
+          position: sticky;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          height: 100px;
+        }
+
+        .navbar-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .navbar-logo {
+          height: 100px;
+        }
+
+        .navbar-logo img {
+          height: 100px;
+          width: 100%;
+        }
+
+        .navbar-menu {
+          position: fixed;
+          top: 100px;
+          left: -100%;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          transition: left var(--transition-speed) ease-in-out;
+          background-color: black;
+        }
+
+        .navbar-menu.active {
+          left: 0;
+        }
+
+        .navbar-menu li {
+          margin: 1.5rem 0;
+        }
+
+        .navbar-toggle {
+          display: block;
+        }
+
+        .navbar-toggle.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .navbar-toggle.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .navbar-toggle.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .services1body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 3.2rem;
+        }
+
+        .services1content {
+          text-align: left;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        .services1content h1 {
+          font-weight: 900;
+          font-size: 2.8rem;
+          line-height: 1;
+          margin: 0;
+          padding: 0;
+        }
+
+        .services1content h3 {
+          font-weight: 800;
+          padding-top: 1rem;
+        }
+
+        .services1content p {
+          text-align: justify;
+
+          padding-top: 1rem;
+        }
+
+        .service-img {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 5rem 1rem 3rem;
+        }
+        .service-img img {
+          width: 100%;
+        }
+
+        .services2body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 2rem;
+        }
+
+        .services2content {
+          text-align: left;
+        }
+
+        .services2content h2 {
+          font-weight: 900;
+          font-size: 2rem;
+          line-height: 1;
+          margin: 0;
+          padding: 0;
+          padding-left: 1rem;
+        }
+
+        .services2content p {
+          text-align: justify;
+          padding-left: 1.8rem;
+          padding-right: 1.5rem;
+          padding-top: 1rem;
+        }
+
+        .services2content h3 {
+          color: red;
+          padding-top: 2rem;
+        }
+
+        .service-img2 {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          transform: scaleX(-1);
+        }
+
+        .service-img2 img {
+          width: 100%;
+        }
+
+        .serviceblur {
+          height: 100%;
+          width: 100%;
+        }
+
+        .services9container {
+          background-color: white;
+          padding-top: 2.5rem;
+          padding-bottom: 2.5rem;
+        }
+
+        .services9body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 2rem;
+        }
+
+        .services9content {
+          text-align: left;
+        }
+
+        .services9content h2 {
+          font-weight: 900;
+          font-size: 2rem;
+          line-height: 1;
+          margin: 0;
+          padding: 0;
+          padding-left: 1rem;
+        }
+
+        .services9content p {
+          text-align: justify;
+          padding-left: 1.8rem;
+          padding-right: 1.5rem;
+          padding-top: 1rem;
+        }
+
+        .services9content h3 {
+          color: red;
+          padding-top: 1rem;
+        }
+
+        .service-img4 {
+          height: 100%;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+        }
+
+        .serviceblur2 {
+          width: 110%;
+        }
+
+        .services4body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-top: 2rem;
+        }
+
+        .services4content h2 {
+          font-weight: 900;
+          font-size: 2rem;
+          line-height: 1;
+          padding: 0;
+          margin: 0;
+          padding-left: 1rem;
+        }
+
+        .services4content p {
+          text-align: justify;
+          padding-left: 1.8rem;
+          padding-right: 1.5rem;
+          padding-top: 1rem;
+        }
+
+        .service-img6 {
+          height: 100%;
+          width: 100%;
+        }
+
+        .serviceblur3 {
+          height: 100%;
+          width: 100%;
+        }
+
+        .details11container {
+          background-color: #000000;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          padding: 3rem 2rem 3rem;
+        }
+
+        .details11body {
+          display: flex;
+          flex-direction: column;
+          color: rgb(255, 255, 255);
+          opacity: 30%;
+          font-family: Arial, Helvetica, sans-serif;
+          gap: 1rem;
+          padding-bottom: 3rem;
+        }
+
+        .row h1 {
+          font-size: 0.9rem;
+        }
+
+        .row h1 a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .row {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .row:nth-child(2) {
+          align-items: center;
+          justify-content: space-around;
+        }
+
+        .footerimage {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .footerimage img {
+          width: 70%;
+        }
+
+        .contactlist {
+          list-style-type: none;
+          color: rgba(255, 255, 255, 0.484);
+        }
+
+        .contactlist li {
+          margin-top: 0.5rem;
+        }
+
+        .details3container {
+          background-color: #222;
+          height: 14rem;
+        }
+
+        .details3body {
+          height: 100%;
+          color: white;
+          padding-left: 2rem;
+          padding-right: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3header {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3content {
+          display: flex;
+          flex-direction: column;
+          gap: 3rem;
+        }
+
+        .details3content h1 {
+          font-size: 1.5rem;
+          line-height: 1;
+          margin: auto;
+          font-weight: 400;
+          text-align: center;
+        }
+
+        .icons {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+        }
+        .icons a {
+          text-decoration: none;
+          color: white;
+        }
+
+        .details12container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: black;
+          padding-bottom: 2rem;
+        }
+
+        .details12container i {
+          color: white;
+          size: 3rem;
+        }
+
+        .details12container p {
+          color: white;
+          font-size: 0.7rem;
+        }
+
+        .letsgetstarted {
+          color: #111;
+          background: #a2b3d4;
+          padding: 1rem;
+          outline: 0;
+          border: 0px;
+          font-size: 1rem;
+        }
+
+        .services-list {
+          padding-top: 1rem;
+          padding-left: 2.2rem;
+          padding-right: 1.5rem;
+        }
+
+        .services-list li {
+          margin-bottom: 0.7rem;
+        }
+
+        .services1container {
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+        }
+
+        .services2container {
+          background-color: #f5f5f5;
+          padding-top: 2.5rem;
+          padding-bottom: 2.5rem;
+        }
+        .services4container {
+          padding-top: 2.5rem;
+          padding-bottom: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <a href="/"
+            ><img
+              src="/assets/md logo white-01.png"
+              alt="MDS Technologies Logo"
+            />
+          </a>
+        </div>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="/home.html">WHO WE ARE</a></li>
+          <li><a href="/components/technologies.html">WHAT WE DO</a></li>
+          <li><a href="/components/services.html">WHY US</a></li>
+          <li><a href="/components/team.html">TEAM</a></li>
+          <li><a href="/components/contact.html">Contact</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbarToggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </button>
+      </div>
+    </nav>
+    <div class="services1container">
+      <div class="services1body">
+        <div class="services1content">
+          <h1>
+            EMPOWER <br />
+            YOUR VISION
+          </h1>
+          <p>
+            where we elevate your brand to new heights, ensuring it reigns
+            supreme in the marketplace. Like a crown atop a throne, we create
+            exceptional solutions that set you apart and signify excellence.
+          </p>
+        </div>
+      </div>
+      <div class="service-img">
+        <img src="/assets/crown-01.png" />
+      </div>
+    </div>
+
+    <div class="services2container">
+      <div class="service-img2">
+        <img src="/assets/wise-01.png" />
+      </div>
+      <div class="services2body">
+        <div class="services2content">
+          <h2>GUIDED BY <br />WISE EXPERIENCE</h2>
+          <ul class="services-list">
+            <li>
+              <strong>Expert Knowledge:</strong> Leveraging years of experience
+              to guide decisions and strategies.
+            </li>
+            <li>
+              <strong>Informed Solutions:</strong> Providing well-thought-out,
+              practical approaches to complex challenges.
+            </li>
+            <li>
+              <strong>Proven Expertise:</strong> Drawing on a strong foundation
+              of successful past projects.
+            </li>
+            <li>
+              <strong>Strategic Insight:</strong> Offering deep understanding
+              and foresight to navigate evolving trends.
+            </li>
+            <li>
+              <strong>Trusted Guidance:</strong> Acting as a reliable partner,
+              helping you make informed and wise choices.
+            </li>
+            <li>
+              <strong>Continuous Learning:</strong> Combining experience with
+              ongoing growth to stay ahead in innovation.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="services9container">
+      <div class="service-img4">
+        <img class="serviceblur2" src="/assets/Young-01.png" />
+      </div>
+      <div class="services9body">
+        <div class="services9content">
+          <h2>DYNAMIC YOUNG TALENT</h2>
+          <ul class="services-list">
+            <li>
+              <strong>Fresh Perspective:</strong> Bringing new and innovative
+              ideas to the table with youthful creativity.
+            </li>
+            <li>
+              <strong>Adaptability:</strong> Quickly learning and responding to
+              changing trends and technologies.
+            </li>
+            <li>
+              <strong>High Energy:</strong> Driven by enthusiasm and passion for
+              producing impactful results.
+            </li>
+            <li>
+              <strong>Tech-Savvy:</strong> Equipped with modern skills and
+              knowledge of the latest digital tools.
+            </li>
+            <li>
+              <strong>Creative Problem-Solving:</strong> Offering bold,
+              out-of-the-box solutions to challenges.
+            </li>
+            <li>
+              <strong>Growth-Oriented:</strong> Eager to continuously learn,
+              evolve, and push boundaries for success.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="services4container">
+      <div class="service-img6">
+        <img class="serviceblur3" src="/assets/global vision-01.png" />
+      </div>
+      <div class="services4body">
+        <div class="services4content">
+          <h2>GLOBAL HORIZONS</h2>
+          <h2>ROOTED EXPERTISE</h2>
+          <ul class="services-list">
+            <li>
+              <strong>Worldwide Perspective:</strong> Bringing a broad, global
+              outlook to projects and strategies.
+            </li>
+            <li>
+              <strong>Cultural Sensitivity:</strong> Tailoring solutions to
+              respect and align with local customs and preferences.
+            </li>
+            <li>
+              <strong>Global Standards:</strong> Applying international best
+              practices to deliver world-class results.
+            </li>
+            <li>
+              <strong>Local Expertise:</strong> Utilizing in-depth knowledge of
+              regional markets and trends.
+            </li>
+            <li>
+              <strong>Balanced Approach:</strong> Merging global innovation with
+              local relevance for impactful outcomes.
+            </li>
+            <li>
+              <strong>Community Connection:</strong> Building solutions that
+              resonate with local audiences while keeping a global reach in
+              mind.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <div>
+              <h1>FOLLOW MANDIN STUDIOS</h1>
+            </div>
+            <div class="icons">
+              <a
+                href="https://www.instagram.com/mandin_studios/"
+                target="_blank"
+                ><i class="fa-brands fa-instagram fa-3x"></i
+              ></a>
+              <a
+                href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance"
+                target="_blank"
+                ><i class="fa-brands fa-twitter fa-3x"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"
+                ><i class="fa-brands fa-linkedin fa-3x"></i
+              ></a>
+              <a href="https://medium.com/@md-studios" target="_blank"
+                ><i class="fa-brands fa-medium fa-3x"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="details11container">
+      <div class="details11body">
+        <div class="row">
+          <h1><a href="/home.html">WHO WE ARE</a></h1>
+          <h1><a href="/components/technologies.html">WHAT WE DO</a></h1>
+          <h1><a href="/components/services.html">WHY US</a></h1>
+        </div>
+        <div class="row">
+          <h1><a href="/components/team.html">TEAM</a></h1>
+          <h1><a href="/components/contact.html">CONTACT</a></h1>
+        </div>
+      </div>
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <div class="details12container" id="scrollToTopMobile">
+      <i class="fa-solid fa-chevron-up fa-1x"></i>
+      <p>UP</p>
+    </div>
+
+    <!-- <script>
+      // Get the button
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+
+      // When the user clicks on the button, scroll to the top of the document
+      scrollToTopBtn.onclick = function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // Smooth scrolling
+        });
+      };
+    </script> -->
+  </body>
+</html>

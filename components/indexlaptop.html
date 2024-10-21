@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>ManDin Studios</title>
+    <link rel="icon" href="https://mdstudios.s3.ap-south-1.amazonaws.com/logo2.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (min-width: 1025px) and (max-width: 1280px) {
+            .logomain {
+                height: 100px;
+            }
+
+            .logo {
+                width: 100%;
+                height: 100%;
+            }
+
+            /* CSS */
+            .navitems {
+                list-style: none;
+                display: flex;
+                gap: 2rem;
+                font-size: 1.12rem;
+                position: relative;
+            }
+
+            .navcontainer {
+                height: 100px;
+                background-color: #f5f5f5;
+            }
+
+            .navbody {
+                padding-left: 2rem;
+                padding-right: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: opacity 1s ease-in;
+            }
+
+            .navright {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .navbutton {
+                color: #ffffff;
+                background: black;
+                padding-right: 1rem;
+                padding-left: 1rem;
+                outline: 0;
+                border: 0px;
+                font-size: 1rem;
+                white-space: nowrap;
+                transition: opacity 1s ease-in;
+                text-decoration: no;
+                cursor: pointer;
+            }
+
+            /* Hover effect for button */
+            .navbutton:hover {
+                background-color: #a2b3d4;
+                /* Change background color on hover */
+                color: #ffffff;
+            }
+
+            .navitems a {
+                position: relative;
+                display: inline-block;
+                text-decoration: none !important;
+                /* Ensure underline is removed */
+                color: black;
+                /* Set the desired color */
+                transition: color 0.3s;
+                /* Optional: for hover effect */
+            }
+
+            /* Global style for all anchor tags to prevent underline */
+            a {
+                text-decoration: none;
+                /* Remove underline globally */
+                color: black;
+                /* Consistent text color */
+                text-wrap: nowrap;
+            }
+
+            /* Hover underline effect using ::after pseudo-element */
+            .navitems a::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -5px;
+                /* Distance from text */
+                width: 100%;
+                height: 2px;
+                /* Thickness of the underline */
+                background-color: #a2b3d4;
+                /* Color of the underline */
+                transform: scaleX(0);
+                /* Start hidden */
+                transform-origin: bottom right;
+                /* Starting point of the underline */
+                transition: transform 0.3s ease-out;
+                /* Smooth transition */
+            }
+
+            .navitems a:hover::after {
+                transform: scaleX(1);
+                /* Scale underline to full width */
+                transform-origin: bottom left;
+                /* Ending point of the underline */
+            }
+
+            .navright {
+                display: flex;
+                gap: 2rem;
+            }
+
+            a {
+                color: black;
+                cursor: pointer;
+                position: relative;
+                transition: color 0.3s ease-in;
+                /* Smooth color change */
+                text-decoration: none;
+                /* Ensure no default underline */
+            }
+
+            .navitems a.active {
+                color: #385584;
+                /* Set the color for the active link */
+            }
+
+            .navitems a.active::after {
+                transform: scaleX(1);
+                /* Ensure underline is visible for the active link */
+                background-color: #a2b3d4;
+                /* Maintain underline color for active link */
+            }
+
+            .hero-container {
+                height: calc(100vh - 100px);
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+                background-color: white;
+            }
+
+            .hero-body {
+                padding: 0 10% 0;
+            }
+
+            .hero-tagline {
+                font-size: 22px;
+
+                margin: 0;
+                padding: 0;
+                margin-left: .5rem;
+                font-weight: 300;
+
+            }
+
+            .hero-body h1 {
+                font-size: 5rem;
+                font-weight: 900;
+                line-height: 1.1;
+                margin: 0;
+            }
+
+            .hero-bottomline {
+                margin-top: 0%;
+                margin-left: .5rem;
+                font-size: 18px;
+                font-weight: 300;
+            }
+
+
+            .why-button {
+                color: #fff;
+                background: #385584;
+                padding: 1rem;
+                border: none;
+                font-size: 1rem;
+                margin-top: 25px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                margin-left: 7px;
+            }
+
+            .why-button:hover {
+                background-color: #a2b3d4;
+            }
+
+            .mobilehero {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 10% 0;
+            }
+
+            .hero-img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .image-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .image-container7 {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .image-container7 img {
+                width: 100%;
+            }
+
+            .hero-img2 {
+                width: 170%;
+                height: 170%;
+            }
+
+            .image-container3 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                height: 100%;
+            }
+
+            .image-container3 img {
+                width: 120%;
+                height: auto;
+            }
+
+            .agency-section-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+                height: 100vh;
+            }
+
+            .details-header h2 {
+                line-height: 0;
+                font-size: 22px;
+                margin-left: -0.1%;
+            }
+
+            .details-header h1 {
+                text-transform: uppercase;
+                font-size: 3.8rem;
+                line-height: 1;
+                font-weight: 900;
+            }
+
+            .details-header .hero-tagline {
+                line-height: 0;
+                margin: 0;
+                padding: 0;
+                margin-bottom: -1rem;
+            }
+
+
+            .details-body {
+                text-align: left;
+            }
+
+            .details-list-body {
+
+                margin-top: -1rem;
+                margin-left: -1.4rem;
+            }
+
+
+            .details-list-body5 {
+                margin-left: -1.3rem;
+            }
+
+            .details-list-body li,
+            .details-list-body5 li {
+                font-size: 1.12rem;
+                margin-bottom: .5rem;
+            }
+
+
+
+            .details2body {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+                height: 100vh;
+            }
+
+            .details2header h2 {
+                margin: 0;
+                padding: 0;
+                margin-left: 0.7%;
+                line-height: 0;
+                font-size: 22px;
+                font-weight: 300;
+            }
+
+            .details-header5 h2 {
+                font-size: 22px;
+                margin: 0;
+                padding: 0;
+                margin-bottom: -1.9rem;
+                margin-left: 0.7%;
+            }
+
+            .details2header {
+                padding: 0 10% 0;
+            }
+
+            .details2header h1 {
+                text-transform: uppercase;
+                font-size: 3.8rem;
+                line-height: 0.4;
+                font-weight: 900;
+            }
+
+            .details2header p {
+                font-size: 1.2rem;
+            }
+
+            .agency-section-container5 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+                height: 100vh;
+            }
+
+            .details-header5 h1 {
+                text-transform: uppercase;
+                font-size: 3.8rem;
+                line-height: 1;
+                font-weight: 900;
+            }
+
+            .details3container {
+                background-color: #222;
+                height: 20rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .details3body {
+                height: 100%;
+                color: white;
+                padding-left: 7rem;
+                padding-right: 7rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .details3header {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .details3content {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .details3content h1 {
+                font-size: 3rem;
+                line-height: 1;
+                margin: auto;
+                font-weight: 400;
+            }
+
+            .details10container {
+                background-color: black;
+                height: 12rem;
+            }
+
+            .details10body {
+                color: white;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .details10header {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4rem;
+            }
+
+            .letsgetstarted {
+                color: #111;
+                background: #a2b3d4;
+                padding: 1rem;
+                outline: 0;
+                border: 0px;
+                font-size: 1.2rem;
+            }
+
+            .details11container {
+                background-color: #000000;
+                font-size: 1rem;
+            }
+
+            .details11body {
+                color: rgb(255, 255, 255);
+                padding: 5rem;
+                padding: 3rem 0 3rem;
+                display: flex;
+                justify-content: center;
+                gap: 5rem;
+                font-size: 10px;
+                opacity: 30%;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 400;
+            }
+
+            .details11body a {
+                color: inherit;
+            }
+
+            .icons {
+                gap: 90px;
+                display: flex;
+                justify-content: center;
+                color: white;
+            }
+
+            .icons a {
+                text-decoration: none;
+                cursor: pointer;
+                color: white;
+                transition: none;
+            }
+
+            .icons a:hover {
+                text-decoration: none;
+            }
+
+            .footerimage {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 0rem;
+            }
+
+            .footerimage img {
+                width: 30%;
+            }
+
+            #backToTopBtn {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                display: none;
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                z-index: 1000;
+                transition: opacity 0.3s, transform 0.3s;
+            }
+
+            #backToTopBtn img {
+                width: 80px;
+            }
+
+            #backToTopBtn.show {
+                display: block;
+            }
+
+            #backToTopBtn.fade-in {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            #backToTopBtn.fade-out {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            #backToTopBtn:hover {
+                transform: scale(1.1);
+            }
+
+            .text-container {
+                padding: 0 10% 0;
+            }
+
+            .details2container {
+                background-color: white;
+            }
+
+            .padding {
+                padding: 0 10% 0 0;
+            }
+            .arrow1{
+               
+                
+            }
+            .arrow {
+                transform: rotate(45deg);
+                color: #a2b3d4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="maincontainer">
+        <div class="navcontainer">
+            <div class="navbody">
+                <div class="logomain"><a href="/"><img class="logo"
+                            src="https://mds-new.s3.ap-south-1.amazonaws.com/logo-01.png" /></a></div>
+                <div class="navright">
+                    <ul class="navitems">
+                        <li><a class="active" href="/home.html">WHO WE ARE</a></li>
+                        <li><a href="/components/technologies.html">WHAT WE DO</a></li>
+                        <li><a href="/components/services.html">WHY US</a></li>
+                        <li><a href="/components/team.html">TEAM</a></li>
+                    </ul>
+                    <button class="navbutton" onclick="location.href='/components/contact.html';">
+                        CONTACT US
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <section class="hero-container">
+            <div class="hero-body">
+                <p class="hero-tagline">We make digital (and simple)...</p>
+                <h1 class="hero-title">
+                    <span class="hero-title-line">BRANDING.</span>
+                    <span class="hero-title-line">PRODUCTS.</span>
+                    <span class="hero-title-line">EXPERIENCES.</span>
+                </h1>
+                <!-- <button class="why-button">Why MDS?</button> -->
+                <p class="hero-bottomline">Let's work together <span><a class="arrow1" href="/components/contact.html"><i class="fa-solid fa-arrow-up arrow"></i></a></span></p>
+            </div>
+            <div class="mobilehero">
+                <img class="hero-img" src="https://mds-new.s3.ap-south-1.amazonaws.com/heroimage.svg" />
+            </div>
+        </section>
+        <!---------------      Hero Section ends             -->
+
+        <!---------------      second Section start             -->
+
+        <div class="agency-section-container">
+            <div class="image-container">
+                <img class="hero-img2" src="https://mdstudios.s3.ap-south-1.amazonaws.com/2ndpage.png" />
+            </div>
+            <div class="text-container">
+                <div class="details-body">
+                    <div class="details-header">
+                        <h2 class="hero-tagline">Where ideas meet expertise</h2>
+                        <h1>Your Vision <br />Our Blueprint</h1>
+                    </div>
+                    <div>
+                        <ul class="details-list-body">
+                            <li>
+                                <strong class="strong">Client-Centered Vision:</strong> We take
+                                your ideas and goals as the foundation of every project.
+                            </li>
+                            <li>
+                                <strong class="strong">Strategic Blueprint:</strong> We craft a
+                                detailed, tailored plan to bring your vision to life.
+                            </li>
+                            <li>
+                                <strong class="strong">Collaboration:</strong> Working closely
+                                with you to ensure alignment at every step.
+                            </li>
+                            <li>
+                                <strong class="strong">Customized Solutions:</strong>
+                                Designing unique strategies that meet your specific needs.
+                            </li>
+                            <li>
+                                <strong class="strong">Execution Excellence:</strong> Turning
+                                your vision into reality with precision and innovation.
+                            </li>
+                            <li>
+                                <strong class="strong">Success-Oriented Approach:</strong>
+                                Focusing on delivering impactful results that match your
+                                aspirations.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---------      second Section end             -->
+
+        <div class="details2container">
+            <div class="details2body">
+                <div class="details2header">
+                    <h2>Building brands into</h2>
+                    <h1>Bold Digital</h1>
+                    <h1>EXPERIENCES</h1>
+                    <div>
+                        <ul class="details-list-body5">
+                            <li>
+                                <strong class="strong">Brand Transformation:</strong> Elevating
+                                traditional brands into cutting-edge digital platforms.
+                            </li>
+                            <li>
+                                <strong class="strong">Immersive Experiences:</strong> Creating
+                                engaging, interactive environments that draw users in.
+                            </li>
+                            <li>
+                                <strong class="strong">Bold Creativity:</strong> Using
+                                innovative designs to make a strong, memorable impression.
+                            </li>
+                            <li>
+                                <strong class="strong">User Engagement:</strong> Building
+                                digital experiences that captivate and connect with audiences.
+                            </li>
+                            <li>
+                                <strong class="strong">Digital Innovation:</strong> Leveraging
+                                the latest technologies to craft seamless, modern experiences.
+                            </li>
+                            <li>
+                                <strong class="strong">End-to-End Solutions:</strong> Offering
+                                comprehensive digital strategies that enhance brand presence.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="image-container3">
+                    <img src="/assets/bold.png" />
+                </div>
+            </div>
+        </div>
+
+        <!--  Last Page start -->
+        <div class="agency-section-container5">
+            <div class="image-container7">
+                <img src="/assets/mug.png" />
+            </div>
+            <div class="text-container5">
+                <div class="details-body5">
+                    <div class="details-header5">
+                        <h2 class="hero-tagline">Your next big idea starts here</h2>
+                        <h1>SHALL WE BEGIN?</h1>
+                    </div>
+                    <div class="padding">
+                        <ul class="details-list-body">
+                            <li>
+                                <strong class="strong">Inspiring Innovation:</strong>
+                                Encouraging you to kickstart your next groundbreaking project
+                                with us.
+                            </li>
+                            <li>
+                                <strong class="strong">Collaborative Partnership:</strong>
+                                Emphasizing our readiness to co-create and develop your ideas.
+                            </li>
+                            <li>
+                                <strong class="strong">Supportive Environment:</strong>
+                                Offering a platform for brainstorming and turning concepts
+                                into action.
+                            </li>
+                            <li>
+                                <strong class="strong">Vision to Reality:</strong> Guiding you
+                                from the initial idea stage to a fully realized solution.
+                            </li>
+                            <li>
+                                <strong class="strong">Bold Beginning:</strong> Inviting you
+                                to embark on an exciting journey of innovation and success.
+                            </li>
+                            <li>
+                                <strong class="strong">Action-Oriented:</strong> Asking the
+                                question, “Shall We Begin?” to prompt immediate action and
+                                engagement.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- last page ends-->
+
+        <!-- last page ends-->
+
+        <div class="details3container">
+            <div class="details3body">
+                <div class="details3header">
+                    <div class="details3content">
+                        <h1>FOLLOW MANDIN STUDIOS</h1>
+                        <div class="icons">
+                            <a href="https://www.instagram.com/mandin_studios/" target="_blank"><i
+                                    class="fa-brands fa-instagram fa-3x"></i></a>
+                            <a href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance"
+                                target="_blank"><i class="fa-brands fa-twitter fa-3x"></i></a>
+                            <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"><i
+                                    class="fa-brands fa-linkedin fa-3x"></i></a>
+                            <a href="https://medium.com/@md-studios" target="_blank"><i
+                                    class="fa-brands fa-medium fa-3x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Start -->
+
+        <div class="details11container">
+            <div class="details11body">
+                <div>
+                    <a href="/home.html">
+                        <h1>WHO WE ARE</h1>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="/components/technologies.html">
+                        <h1>WHAT WE DO</h1>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="/components/services.html">
+                        <h1>WHY US</h1>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="/components/team.html">
+                        <h1>TEAM</h1>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="/components/contact.html">
+                        <h1>CONTACT</h1>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+        </div>
+
+        <!--  Back top button -->
+
+        <!-- Back to Top Button with PNG image -->
+        <button id="backToTopBtn" onclick="scrollToTop()">
+            <img src="/assets/up-arrow-01.png" alt="Back to Top" />
+        </button>
+
+        <div class="content"></div>
+        <!--  Back top button -->
+        <script>
+            window.onscroll = function () {
+                toggleBackToTopButton();
+            };
+
+            function toggleBackToTopButton() {
+                const backToTopBtn = document.getElementById("backToTopBtn");
+                if (
+                    document.body.scrollTop > 100 ||
+                    document.documentElement.scrollTop > 100
+                ) {
+                    backToTopBtn.style.display = "block";
+                } else {
+                    backToTopBtn.style.display = "none";
+                }
+            }
+
+            // Scroll back to top smoothly
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const hamburger = document.querySelector(".hamburger");
+                const navRight = document.querySelector(".navright");
+
+                hamburger.addEventListener("click", function () {
+                    hamburger.classList.toggle("active");
+                    navRight.classList.toggle("active");
+                });
+
+                // Close menu when a link is clicked
+                document.querySelectorAll(".navitems a").forEach((link) => {
+                    link.addEventListener("click", () => {
+                        hamburger.classList.remove("active");
+                        navRight.classList.remove("active");
+                    });
+                });
+            });
+            const backToTopBtn = document.getElementById("backToTopBtn");
+
+            function toggleButtonVisibility() {
+                if (window.pageYOffset > 300) {
+                    if (!backToTopBtn.classList.contains("show")) {
+                        backToTopBtn.classList.add("show");
+                        setTimeout(() => {
+                            backToTopBtn.classList.add("fade-in");
+                        }, 10);
+                    }
+                } else {
+                    backToTopBtn.classList.remove("fade-in");
+                    backToTopBtn.classList.add("fade-out");
+                    setTimeout(() => {
+                        backToTopBtn.classList.remove("show", "fade-out");
+                    }, 300);
+                }
+            }
+
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+
+            window.addEventListener("scroll", toggleButtonVisibility);
+            backToTopBtn.addEventListener("click", scrollToTop);
+
+            document
+                .querySelector(".menu-icon")
+                .addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    document.querySelector(".navitems").classList.toggle("active");
+                });
+        </script>
+</body>
+
+</html>

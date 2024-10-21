@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+      :root {
+        --primary-color: #8bccf8d8;
+        --secondary-color: #2c3e50;
+        --text-color: #333;
+        --background-color: #f4f4f4;
+        --card-width: 350px;
+        --card-height: 500px;
+        --card-gap: 30px;
+      }
+
+      @media (min-width: 1025px) and (max-width: 1280px) {
+        body {
+          font-family: "Open Sans", sans-serif;
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+        }
+
+        .logomain {
+          height: 100px;
+        }
+
+        .logo {
+          width: 100%;
+          height: 100%;
+        }
+
+        /* CSS */
+        .navitems {
+          list-style: none;
+          display: flex;
+          gap: 2rem;
+          font-size: 1.12rem;
+          position: relative;
+        }
+
+        .navcontainer {
+          height: 100px;
+          background-color: #f5f5f5;
+        }
+
+        .navbody {
+          padding-left: 2rem;
+          padding-right: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transition: opacity 1s ease-in;
+        }
+
+        .navright {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .navbutton {
+          color: #ffffff;
+          background: black;
+          padding-right: 1rem;
+          padding-left: 1rem;
+          outline: 0;
+          border: 0px;
+          font-size: 1rem;
+          white-space: nowrap;
+          transition: opacity 1s ease-in;
+          text-decoration: no;
+          cursor: pointer;
+        }
+
+        /* Hover effect for button */
+        .navbutton:hover {
+          background-color: #a2b3d4;
+          /* Change background color on hover */
+          color: #ffffff;
+        }
+
+        .navitems a {
+          position: relative;
+          display: inline-block;
+          text-decoration: none !important;
+          /* Ensure underline is removed */
+          color: black;
+          /* Set the desired color */
+          transition: color 0.3s;
+          /* Optional: for hover effect */
+        }
+
+        /* Global style for all anchor tags to prevent underline */
+        a {
+          text-decoration: none;
+          /* Remove underline globally */
+          color: black;
+          /* Consistent text color */
+          text-wrap: nowrap;
+        }
+
+        /* Hover underline effect using ::after pseudo-element */
+        .navitems a::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -5px;
+          /* Distance from text */
+          width: 100%;
+          height: 2px;
+          /* Thickness of the underline */
+          background-color: #a2b3d4;
+          /* Color of the underline */
+          transform: scaleX(0);
+          /* Start hidden */
+          transform-origin: bottom right;
+          /* Starting point of the underline */
+          transition: transform 0.3s ease-out;
+          /* Smooth transition */
+        }
+
+        .navitems a:hover::after {
+          transform: scaleX(1);
+          /* Scale underline to full width */
+          transform-origin: bottom left;
+          /* Ending point of the underline */
+        }
+
+        .navright {
+          display: flex;
+          gap: 2rem;
+        }
+
+        a {
+          color: black;
+          cursor: pointer;
+          position: relative;
+          transition: color 0.3s ease-in;
+          /* Smooth color change */
+          text-decoration: none;
+          /* Ensure no default underline */
+        }
+        .navitems a.active {
+          color: #385584; /* Set the color for the active link */
+        }
+
+        .navitems a.active::after {
+          transform: scaleX(
+            1
+          ); /* Ensure underline is visible for the active link */
+          background-color: #a2b3d4; /* Maintain underline color for active link */
+        }
+
+        .teamcontainer {
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+        }
+
+        .teamcontainer2 {
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+          background-color: #f5f5f5;
+        }
+
+        .teambody2 {
+          padding: 0 10% 0;
+        }
+
+        .teambody2 h2 {
+          font-size: 3.8rem;
+          margin: 0;
+          padding: 0;
+          font-weight: 900;
+        }
+
+        .teambody2 p {
+          font-size: 1.12rem;
+          margin-bottom: 1rem;
+          text-align: justify;
+        }
+
+        .teamimage2 {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 10% 0 10%;
+        }
+
+        .teamimage2 img {
+          width: 100%;
+        }
+
+        .teamcontainer3 {
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+        }
+
+        .teambody3 {
+          width: 100%;
+          padding: 0 10% 0;
+        }
+
+        .teambody3 h2 {
+          font-size: 3.8rem;
+          font-weight: 900;
+          margin: 0;
+          padding: 0;
+          line-height: 1.2;
+        }
+
+        .teambody3 p {
+          font-size: 1.12rem;
+          text-align: justify;
+          padding: 0 10% 0 0;
+        }
+
+        .teamimg3 {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          padding: 0 10% 0;
+        }
+
+        .teamimg3 img {
+          width: 100%;
+        }
+
+        .teamcontainer4 {
+          height: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+          background-color: #f5f5f5;
+        }
+
+        .teambody4 {
+          padding: 0 10% 0 0;
+          margin: 0 0 0 -5%;
+        }
+
+        .teambody4 h2 {
+          font-size: 1.7rem;
+          color: #000000;
+          font-weight: 900;
+          margin-bottom: 0.1rem;
+          text-wrap: nowrap;
+        }
+
+        .teambody4 h1 {
+          font-size: 3.8rem;
+          font-weight: 800;
+          line-height: 1.2;
+          padding: 0;
+          margin: 0;
+          text-wrap: nowrap;
+        }
+
+        .teambody4 p {
+          font-size: 1.12rem;
+          margin-bottom: 1rem;
+          text-align: justify;
+        }
+
+        .teamimage4 img {
+          width: 100%;
+          height: auto;
+        }
+
+        .teamheader h1 {
+          font-family: "Open Sans", sans-serif;
+          font-size: 6.5rem;
+          line-height: 1.1;
+          position: absolute;
+          left: 175px;
+          top: 15px;
+        }
+
+        .teamheader h2 {
+          font-family: "Open Sans", sans-serif;
+          font-size: 5.4rem;
+          line-height: 1.1;
+          position: absolute;
+          left: 185px;
+          top: 295px;
+          color: black;
+        }
+
+        .teamimg {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 10% 0 0;
+        }
+
+        .image {
+          width: 100%;
+        }
+
+        .teamcontainer {
+          overflow: hidden;
+          font-family: "Open Sans", sans-serif;
+        }
+
+        .teambody {
+          display: flex;
+          text-align: right;
+          padding: 0 0 0 10%;
+        }
+
+        .teambody h1 {
+          font-size: 6rem;
+          font-weight: 800;
+          margin: 0;
+          padding: 0;
+          line-height: 1;
+        }
+
+        .teambody h2 {
+          font-size: 2rem;
+          font-weight: 800;
+          margin: 0;
+          padding: 0;
+          line-height: 0;
+          margin-bottom: 0.8rem;
+        }
+
+        .teambody h3 {
+          margin: 0;
+          padding: 0;
+        }
+
+        .details3container {
+          background-color: #222;
+          height: 20rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3body {
+          height: 100%;
+          color: white;
+          padding-left: 7rem;
+          padding-right: 7rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details3header {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .details3content {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 3rem;
+        }
+
+        .details3content h1 {
+          font-size: 3rem;
+          line-height: 1;
+          margin: auto;
+          font-weight: 400;
+        }
+
+        .details10container {
+          background-color: black;
+          height: 12rem;
+        }
+
+        .details10body {
+          color: white;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .details10header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4rem;
+        }
+
+        .letsgetstarted {
+          color: #111;
+          background: #a2b3d4;
+          padding: 1rem;
+          outline: 0;
+          border: 0px;
+          font-size: 1.2rem;
+        }
+
+        .details11container {
+          background-color: #000000;
+          font-size: 1rem;
+        }
+
+        .details11body {
+          color: rgb(255, 255, 255);
+          padding: 5rem;
+          padding: 3rem 0 3rem;
+          display: flex;
+          justify-content: center;
+          gap: 5rem;
+          font-size: 10px;
+          opacity: 30%;
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: 400;
+        }
+
+        .details11body a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .icons {
+          gap: 90px;
+          display: flex;
+          justify-content: center;
+          color: white;
+        }
+
+        .icons a {
+          text-decoration: none;
+          cursor: pointer;
+          color: white;
+          transition: none;
+        }
+
+        .icons a:hover {
+          text-decoration: none;
+        }
+
+        .footerimage {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 0rem;
+        }
+
+        .footerimage img {
+          width: 30%;
+        }
+
+        .team-section {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          overflow: hidden;
+          gap: 5rem;
+        }
+
+        .left-section {
+          height: 100%;
+          max-width: 100%;
+          z-index: 10;
+        }
+
+        .team-header h1 {
+          margin: 0;
+          padding: 0;
+          font-size: 5rem;
+          line-height: 1.1;
+          font-weight: 800;
+          color: black;
+          margin-bottom: 2rem;
+          text-transform: uppercase;
+          letter-spacing: -1px;
+          position: relative;
+        }
+
+        @keyframes underline {
+          to {
+            transform: scaleX(1);
+          }
+        }
+
+        .controls {
+          display: flex;
+          gap: 1.5rem;
+        }
+
+        .button-svg {
+          background: none;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          padding: 10px;
+          border-radius: 100%;
+        }
+
+        .button-svg:hover {
+          background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .button-svg:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .button-svg img {
+          width: 90px;
+          height: auto;
+        }
+
+        .right-section {
+          flex: 2;
+          overflow: hidden;
+        }
+
+        .cards-container {
+          width: calc(2 * var(--card-width) + var(--card-gap));
+          overflow: hidden;
+        }
+
+        .cards {
+          display: flex;
+          gap: var(--card-gap);
+          transition: transform 0.6s ease;
+        }
+
+        .card {
+          flex: 0 0 var(--card-width);
+          height: var(--card-height);
+          background-color: #fff;
+          border-radius: 20px;
+          overflow: hidden;
+          position: relative;
+          transition: all 0.6s ease;
+        }
+
+        .card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s ease;
+        }
+
+        .card.zoom-out {
+          animation: zoomOutFade 0.6s forwards;
+        }
+
+        .card.zoom-in {
+          animation: zoomInFade 0.8s forwards;
+        }
+
+        @keyframes zoomOutFade {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+          }
+
+          100% {
+            transform: scale(0.25);
+            opacity: 0;
+          }
+        }
+
+        @keyframes zoomInFade {
+          0% {
+            transform: scale(0.25);
+            opacity: 0;
+          }
+
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+
+        .zoom-out {
+          animation: zoomOutFade 0.7s forwards;
+        }
+
+        .zoom-in {
+          animation: zoomInFade 0.7s forwards;
+        }
+
+        .card.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        #backToTopBtn {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          display: none;
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          z-index: 1000;
+          transition: opacity 0.3s, transform 0.3s;
+        }
+
+        #backToTopBtn img {
+          width: 80px;
+        }
+
+        #backToTopBtn.show {
+          display: block;
+        }
+
+        #backToTopBtn.fade-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        #backToTopBtn.fade-out {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        #backToTopBtn:hover {
+          transform: scale(1.1);
+        }
+
+        .team {
+          height: 100vh;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .teammain {
+          height: 100vh;
+          width: 100%;
+          padding: 0 0 0 5%;
+          min-height: 100vh;
+          position: relative;
+          background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navcontainer">
+      <div class="navbody">
+        <div class="logomain">
+          <a href="/"
+            ><img
+              class="logo"
+              src="https://mds-new.s3.ap-south-1.amazonaws.com/logo-01.png"
+          /></a>
+        </div>
+        <div class="navright">
+          <ul class="navitems">
+            <li><a href="/home.html">WHO WE ARE</a></li>
+            <li><a href="/components/technologies.html">WHAT WE DO</a></li>
+            <li><a href="/components/services.html">WHY US</a></li>
+            <li><a class="active" href="/components/team.html">TEAM</a></li>
+          </ul>
+          <button
+            class="navbutton"
+            onclick="location.href='/components/contact.html';"
+          >
+            CONTACT US
+          </button>
+        </div>
+      </div>
+    </div>
+    <!---------------      Hero Section starts             -->
+    <!---------------      Hero Section starts             -->
+    <div class="team1">
+      <div class="teamcontainer">
+        <div class="teambody">
+          <div class="teamtitle">
+            <h2>OUR TEAM</h2>
+            <h1>PLAYERS</h1>
+          </div>
+        </div>
+        <div class="teamimg">
+          <img
+            class="image"
+            src="https://mds-new.s3.ap-south-1.amazonaws.com/teambg.svg"
+          />
+        </div>
+      </div>
+    </div>
+    <!---------------      Hero Section ends             -->
+    <!---------------      Hero Section ends             -->
+    <!---------------      Hero Section starts             -->
+
+    <div class="team">
+      <div class="teamcontainer2">
+        <div class="teamimage2">
+          <img
+            src="https://mdstudios.s3.ap-south-1.amazonaws.com/team2img.png"
+          />
+        </div>
+        <div class="teambody2">
+          <h2>VISION</h2>
+          <p>
+            At the heart of our company lies a shared vision that drives us
+            forward. We believe in the power of collaboration, where every team
+            member brings their unique expertise and passion to the table.
+            Together, we strive to push the boundaries of innovation, crafting
+            solutions that not only meet but exceed the expectations of our
+            clients. Our vision is to create a future where technology and
+            creativity converge, delivering excellence through teamwork and a
+            unified purpose.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!---------------      Hero Section ends             -->
+    <div class="team">
+      <div class="teamcontainer3">
+        <div class="teambody3">
+          <h2>ART OF <br />MAKING SHINE</h2>
+          <p>
+            Our team is dedicated to mastering this art, carefully crafting each
+            project with the same attention to detail and passion that goes into
+            making the finest diamonds. We take pride in our ability to turn
+            complex ideas into seamless, elegant solutions that not only meet
+            technical requirements but also resonate with beauty and
+            functionality. With every line of code and every design choice, we
+            aim to make our work shine, reflecting our commitment to quality and
+            innovation.Where every expert hand contributes to a team effort of
+            brilliance. We merge the raw beauty of nature with our collective
+            expertise, crafting diamonds that reflect our commitment to
+            excellence and the highest standards. This is not just our work—it
+            is our passion, our style, and our promise.
+          </p>
+        </div>
+        <div class="teamimg3">
+          <img
+            src="https://mdstudios.s3.ap-south-1.amazonaws.com/team3img.png"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="team">
+      <div class="teamcontainer4">
+        <div class="teamimage4">
+          <img src="/assets/Unveiling the Art of-01 (2).svg" />
+        </div>
+        <div class="teambody4">
+          <h1>UNVEILING THE ART <br />OF MASTERPIECE!!</h1>
+          <p>
+            Where every expert hand contributes to a team effort of brilliance.
+            We merge the raw beauty of nature with our collective expertise,
+            crafting diamonds that reflect our commitment to excellence and the
+            highest standards. This is not just our work—it is our passion, our
+            style, and our promise.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="teammain">
+      <div class="team-section">
+        <section class="left-section">
+          <div class="team-header">
+            <h1>OUR <br />TEAM<br />PLAYERS</h1>
+          </div>
+          <div class="controls">
+            <button id="prev-button" class="button-svg">
+              <img src="../assets/new-button.png" alt="Previous" />
+            </button>
+            <button id="next-button" class="button-svg">
+              <img src="../assets/newbutton2.png" alt="Next" />
+            </button>
+          </div>
+        </section>
+        <section class="right-section">
+          <div class="cards-container">
+            <div class="cards">
+              <article class="card">
+                <img src="/assets/Team members-01.png" alt="Team Member 1" />
+                <div class="card-info"></div>
+              </article>
+              <article class="card">
+                <img src="/assets/Team members-02.png" alt="Team Member 2" />
+                <div class="card-info"></div>
+              </article>
+              <article class="card">
+                <img src="/assets/Team members-04.png" alt="Team Member 3" />
+                <div class="card-info"></div>
+              </article>
+              <article class="card">
+                <img src="/assets/Team members-03.png" alt="Team Member 4" />
+                <div class="card-info"></div>
+              </article>
+              <article class="card">
+                <img
+                  src="/assets/Team members-06 (1).png"
+                  alt="Team Member 5"
+                />
+                <div class="card-info"></div>
+              </article>
+              <article class="card">
+                <img src="/assets/Team members-05.png" alt="Team Member 6" />
+                <div class="card-info"></div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="details3container">
+      <div class="details3body">
+        <div class="details3header">
+          <div class="details3content">
+            <h1>FOLLOW MANDIN STUDIOS</h1>
+            <div class="icons">
+              <a
+                href="https://www.instagram.com/mandin_studios/"
+                target="_blank"
+                ><i class="fa-brands fa-instagram fa-3x"></i
+              ></a>
+              <a
+                href="https://x.com/i/flow/login?redirect_after_login=%2Foliviafinance"
+                target="_blank"
+                ><i class="fa-brands fa-twitter fa-3x"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/mdstudios/" target="_blank"
+                ><i class="fa-brands fa-linkedin fa-3x"></i
+              ></a>
+              <a href="https://medium.com/@md-studios" target="_blank"
+                ><i class="fa-brands fa-medium fa-3x"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+
+    <div class="details11container">
+      <div class="details11body">
+        <div>
+          <a href="/home.html">
+            <h1>WHO WE ARE</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/technologies.html">
+            <h1>WHAT WE DO</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/services.html">
+            <h1>WHY US</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/team.html">
+            <h1>TEAM</h1>
+          </a>
+        </div>
+
+        <div>
+          <a href="/components/contact.html">
+            <h1>CONTACT</h1>
+          </a>
+        </div>
+      </div>
+
+      <div class="footerimage"><img src="../assets/whitefooter.svg" /></div>
+    </div>
+
+    <button id="backToTopBtn" onclick="scrollToTop()">
+      <img src="/assets/up-arrow-01.png" alt="Back to Top" />
+    </button>
+    <script src="/js/animation.js"></script>
+    <script>
+      window.onscroll = function () {
+        toggleBackToTopButton();
+      };
+
+      function toggleBackToTopButton() {
+        const backToTopBtn = document.getElementById("backToTopBtn");
+        if (
+          document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100
+        ) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      }
+
+      // Scroll back to top smoothly
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navRight = document.querySelector(".navright");
+
+        hamburger.addEventListener("click", function () {
+          hamburger.classList.toggle("active");
+          navRight.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".navitems a").forEach((link) => {
+          link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navRight.classList.remove("active");
+          });
+        });
+      });
+      const backToTopBtn = document.getElementById("backToTopBtn");
+
+      function toggleButtonVisibility() {
+        if (window.pageYOffset > 300) {
+          if (!backToTopBtn.classList.contains("show")) {
+            backToTopBtn.classList.add("show");
+            setTimeout(() => {
+              backToTopBtn.classList.add("fade-in");
+            }, 10);
+          }
+        } else {
+          backToTopBtn.classList.remove("fade-in");
+          backToTopBtn.classList.add("fade-out");
+          setTimeout(() => {
+            backToTopBtn.classList.remove("show", "fade-out");
+          }, 300);
+        }
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      window.addEventListener("scroll", toggleButtonVisibility);
+      backToTopBtn.addEventListener("click", scrollToTop);
+
+      document
+        .querySelector(".menu-icon")
+        .addEventListener("click", function () {
+          this.classList.toggle("active");
+          document.querySelector(".navitems").classList.toggle("active");
+        });
+    </script>
+  </body>
+</html>

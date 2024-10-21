@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ManDin Studios</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+    font-family: 'sifty';
+    src: url('/assets/SIFTY-SEMIBOLD.woff') format('woff'),
+    src: url('/assets/SIFTY-SEMIBOLD.woff2') format('woff2'),
+}
+      svg {
+        width: 400px;
+        height: 100px;
+        overflow: visible;
+      }
+
+      .text {
+        fill: none;
+        stroke: black;
+        stroke-width: 1;
+        stroke-dasharray: 400;
+        stroke-dashoffset: 400;
+        animation: loader 5s forwards;
+        -webkit-animation: loader 5s forwards; /* For Safari */
+      }
+
+      @keyframes loader {
+        0% {
+          stroke-dashoffset: 400;
+        }
+        90%,
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @-webkit-keyframes loader {
+        /* For Safari */
+        0% {
+          stroke-dashoffset: 400;
+        }
+        90%,
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      .fill {
+        fill: black;
+        opacity: 0;
+        animation: fillText 1s forwards 4s;
+        -webkit-animation: fillText 1s forwards 4s; /* For Safari */
+      }
+
+      @keyframes fillText {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes fillText {
+        /* For Safari */
+        to {
+          opacity: 1;
+        }
+      }
+
+      #main-content {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        -webkit-transition: opacity 0.5s ease; /* For Safari */
+      }
+
+      #main-content.visible {
+        display: block;
+        opacity: 1;
+      }
+
+      #loader {
+        height: calc(100vh - 20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .text,
+      .fill {
+        font-family: "sifty";
+        font-size: 4.375rem;
+        font-weight: 900;
+      }
+
+      @media (max-width: 768px) {
+        .text,
+        .fill {
+          font-size: 6vw;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .text,
+        .fill {
+          font-size: 8vw;
+        }
+      }
+    </style>
+    <!-- Link to CSS file -->
+  </head>
+  <body>
+    <div id="loader">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <text
+          x="50%"
+          y="50%"
+          class="text"
+          text-anchor="middle"
+          alignment-baseline="middle"
+        >
+          ManDin Studios
+        </text>
+        <text
+          x="50%"
+          y="50%"
+          class="fill"
+          text-anchor="middle"
+          alignment-baseline="middle"
+        >
+          ManDin Studios
+        </text>
+      </svg>
+    </div>
+  </body>
+  <script>
+    // Redirect to main.html after 6 seconds
+    setTimeout(() => {
+      window.location.href = "home.html";
+    }, 6000);
+  </script>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ManDin Team</title>
+</head>
+
+<body>
+  <div id="desktopContent"></div>
+  <div id="mobileContent"></div>
+  <div id="tabletContent"></div>
+  <div id="laptopContent"></div>
+  <script>
+    function isMobile() {
+      return window.innerWidth <= 767;
+    }
+
+    function isTablet() {
+      return window.innerWidth >= 768 && window.innerWidth <= 1024;
+    }
+
+    function isLaptop() {
+      return window.innerWidth >= 1025 && window.innerWidth <= 1280;
+    }
+
+    function initializeMobileMenu() {
+      const navbarMenu = document.getElementById("navbarMenu");
+      const navbarToggle = document.getElementById("navbarToggle");
+      if (navbarMenu && navbarToggle) {
+        navbarToggle.addEventListener("click", function () {
+          navbarMenu.classList.toggle("active");
+          navbarToggle.classList.toggle("active");
+        });
+      }
+    }
+
+    function getTopScrollingForMobile() {
+      const scrollToTopBtn = document.getElementById("scrollToTopMobile");
+
+      // When the user clicks on the button, scroll to the top of the document
+      scrollToTopBtn.onclick = function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // Smooth scrolling
+        });
+      };
+    }
+
+    function mobileSlideAnimation() {
+      const cards = document.querySelectorAll(".card");
+      const cardsContainer = document.querySelector(".cards");
+      const prevButton = document.getElementById("prev-button");
+      const nextButton = document.getElementById("next-button");
+
+      let currentCardIndex = 0;
+      const cardWidth = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--card-width"
+        )
+      );
+      const cardGap = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--card-gap"
+        )
+      );
+
+      function updateCardsTransform() {
+        const offset = currentCardIndex * (cardWidth + cardGap);
+        cardsContainer.style.transform = `translateX(-${offset}px) translateZ(0)`; // Adding translateZ for 3D effect
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card, index) => {
+          if (index === currentCardIndex) {
+            card.style.zIndex = 10; // Bring the current card to the front
+          } else {
+            card.style.zIndex = 1; // Send others to the back
+          }
+        });
+      }
+
+      function updateButtonStates() {
+        prevButton.disabled = currentCardIndex === 0;
+        nextButton.disabled = currentCardIndex >= cards.length - 1;
+        prevButton.style.opacity = prevButton.disabled ? 0.5 : 1;
+        nextButton.style.opacity = nextButton.disabled ? 0.5 : 1;
+      }
+
+      function slideCards(direction) {
+        if (direction === "next" && currentCardIndex < cards.length - 1) {
+          animateCardTransition("next");
+        } else if (direction === "prev" && currentCardIndex > 0) {
+          animateCardTransition("prev");
+        }
+      }
+
+      function animateCardTransition(direction) {
+        const currentCard = cards[currentCardIndex];
+        const nextCard = cards[currentCardIndex + 1];
+        const targetCard =
+          direction === "next"
+            ? cards[currentCardIndex + 2]
+            : cards[currentCardIndex - 1];
+        if (direction === "next") {
+          currentCard.classList.add("zoom-out");
+          setTimeout(() => {
+            currentCard.classList.add("hidden");
+            currentCard.classList.remove("zoom-out");
+            currentCardIndex++;
+            updateCardsTransform();
+            updateButtonStates();
+            targetCard.classList.remove("hidden");
+            setTimeout(() => {
+              targetCard.classList.remove("zoom-in");
+            }, 300);
+          }, 300);
+        } else {
+          targetCard.classList.remove("hidden");
+          targetCard.classList.add("zoom-in");
+          setTimeout(() => {
+            currentCardIndex--;
+            updateCardsTransform();
+            updateButtonStates();
+            setTimeout(() => {
+              nextCard.classList.add("hidden");
+              targetCard.classList.remove("zoom-in");
+            }, 300);
+          }, 300);
+        }
+        console.log(currentCard, nextCard, targetCard);
+      }
+
+      nextButton.addEventListener("click", () => slideCards("next"));
+      prevButton.addEventListener("click", () => slideCards("prev"));
+
+      // Initialize
+      updateCardsTransform();
+      updateButtonStates();
+
+      // Responsive adjustments
+      window.addEventListener("resize", () => {
+        updateCardsTransform();
+      });
+    }
+
+    function laptopDesktopSlideAnimation() {
+      const cards = document.querySelectorAll(".card");
+      const cardsContainer = document.querySelector(".cards");
+      const prevButton = document.getElementById("prev-button");
+      const nextButton = document.getElementById("next-button");
+
+      let currentCardIndex = 0;
+      const cardWidth = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--card-width"
+        )
+      );
+      const cardGap = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--card-gap"
+        )
+      );
+
+      function updateCardsTransform() {
+        const offset = currentCardIndex * (cardWidth + cardGap);
+        cardsContainer.style.transform = `translateX(-${offset}px)`;
+      }
+
+      function updateButtonStates() {
+        prevButton.disabled = currentCardIndex === 0;
+        nextButton.disabled = currentCardIndex >= cards.length - 2;
+        prevButton.style.opacity = prevButton.disabled ? 0.5 : 1;
+        nextButton.style.opacity = nextButton.disabled ? 0.5 : 1;
+      }
+
+      function animateCard(card, animation) {
+        return new Promise((resolve) => {
+          card.classList.add(animation);
+          card.addEventListener(
+            "animationend",
+            () => {
+              card.classList.remove(animation);
+              resolve();
+            },
+            { once: true }
+          );
+        });
+      }
+
+      async function slideCards(direction) {
+        if (direction === "next" && currentCardIndex < cards.length - 2) {
+          const currentCard = cards[currentCardIndex];
+          const nextCard = cards[currentCardIndex + 2];
+
+          await animateCard(currentCard, "zoom-out");
+          currentCard.classList.add("hidden");
+
+          currentCardIndex++;
+          updateCardsTransform();
+          updateButtonStates();
+
+          // nextCard.classList.remove('hidden');
+          // await animateCard(nextCard, 'zoom-in');
+        } else if (direction === "prev" && currentCardIndex > 0) {
+          const currentCard = cards[currentCardIndex + 1];
+          const prevCard = cards[currentCardIndex - 1];
+
+          // await animateCard(currentCard, 'zoom-out');
+          // currentCard.classList.add('hidden');
+
+          currentCardIndex--;
+          updateCardsTransform();
+          updateButtonStates();
+
+          prevCard.classList.remove("hidden");
+          await animateCard(prevCard, "zoom-in");
+        }
+      }
+
+      nextButton.addEventListener("click", () => slideCards("next"));
+      prevButton.addEventListener("click", () => slideCards("prev"));
+
+      // Initialize
+      updateCardsTransform();
+      updateButtonStates();
+
+      // Show initial two cards
+      cards[0].classList.remove("hidden");
+      cards[1].classList.remove("hidden");
+
+      // Responsive adjustments
+      window.addEventListener("resize", () => {
+        updateCardsTransform();
+      });
+    }
+
+    function executeScripts(container) {
+      const scripts = container.getElementsByTagName("script");
+      console.log(scripts); // Log the script elements for debugging
+      Array.from(scripts).forEach((script) => {
+        const newScript = document.createElement("script");
+        if (script.src) {
+          // For external scripts, use the `src` attribute
+          newScript.src = script.src;
+          newScript.onload = () => console.log(`${script.src} loaded.`);
+          newScript.onerror = () =>
+            console.error(`Failed to load script: ${script.src}`);
+        } else {
+          // For inline scripts, use `textContent`
+          newScript.textContent = script.textContent;
+        }
+        // Append the new script element to the document body
+        document.body.appendChild(newScript);
+        console.log(container);
+      });
+    }
+
+    function loadContent() {
+      const desktopContent = document.getElementById("desktopContent");
+      const mobileContent = document.getElementById("mobileContent");
+      const tabletContent = document.getElementById("tabletContent");
+      const laptopContent = document.getElementById("laptopContent");
+      if (isMobile()) {
+        fetch("teammobile.html")
+          .then((response) => response.text())
+          .then((html) => {
+            mobileContent.innerHTML = ""; // Clear previous content
+            mobileContent.insertAdjacentHTML("beforeend", html);
+            executeScripts(mobileContent);
+            initializeMobileMenu();
+            getTopScrollingForMobile();
+            mobileSlideAnimation();
+
+            tabletContent.innerHTML = "";
+            laptopContent.innerHTML = "";
+            desktopContent.innerHTML = "";
+          });
+      } else if (isTablet()) {
+        fetch("teamtablet.html")
+          .then((response) => response.text())
+          .then((html) => {
+            tabletContent.innerHTML = ""; // Clear previous content
+            tabletContent.insertAdjacentHTML("beforeend", html);
+            executeScripts(tabletContent);
+            initializeMobileMenu();
+            getTopScrollingForMobile();
+            mobileSlideAnimation();
+
+            mobileContent.innerHTML = "";
+            laptopContent.innerHTML = "";
+            desktopContent.innerHTML = "";
+          });
+      } else if (isLaptop()) {
+        fetch("teamlaptop.html")
+          .then((response) => response.text())
+          .then((html) => {
+            laptopContent.innerHTML = ""; // Clear previous content
+            laptopContent.insertAdjacentHTML("beforeend", html);
+            executeScripts(laptopContent);
+            laptopDesktopSlideAnimation();
+
+            mobileContent.innerHTML = "";
+            tabletContent.innerHTML = "";
+            desktopContent.innerHTML = "";
+          });
+      } else {
+        fetch("teamdesktop.html")
+          .then((response) => response.text())
+          .then((html) => {
+            desktopContent.innerHTML = ""; // Clear previous content
+            desktopContent.insertAdjacentHTML("beforeend", html);
+            executeScripts(desktopContent);
+            laptopDesktopSlideAnimation();
+
+            mobileContent.innerHTML = "";
+            tabletContent.innerHTML = "";
+            laptopContent.innerHTML = "";
+          });
+      }
+    }
+    // Initial load
+    loadContent();
+    // Reload on window resize
+    window.addEventListener("resize", loadContent);
+  </script>
+</body>
+
+</html>

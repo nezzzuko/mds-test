@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ManDin Technologies</title>
+</head>
+
+<body>
+  <div id="desktopContent"></div>
+  <div id="mobileContent"></div>
+  <div id="tabletContent"></div>
+  <div id="laptopContent"></div>
+
+  <script>
+    function isMobile() {
+      return window.innerWidth <= 767;
+    }
+
+    function isTablet() {
+      return window.innerWidth >= 768 && window.innerWidth <= 1024;
+    }
+
+    function isLaptop() {
+      return window.innerWidth >= 1025 && window.innerWidth <= 1280;
+    }
+
+    function initializeMobileMenu() {
+      const navbarMenu = document.getElementById("navbarMenu");
+      const navbarToggle = document.getElementById("navbarToggle");
+
+      if (navbarMenu && navbarToggle) {
+        navbarToggle.addEventListener("click", function () {
+          navbarMenu.classList.toggle("active");
+          navbarToggle.classList.toggle("active");
+        });
+      }
+    }
+
+    function getTopScrollingForMobile() {
+        const scrollToTopBtn = document.getElementById("scrollToTopMobile");
+
+        // When the user clicks on the button, scroll to the top of the document
+        scrollToTopBtn.onclick = function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Smooth scrolling
+          });
+        };
+      }
+
+    function executeScripts(container) {
+      const scripts = container.getElementsByTagName("script");
+      console.log(scripts); // Log the script elements for debugging
+      Array.from(scripts).forEach((script) => {
+        const newScript = document.createElement("script");
+        if (script.src) {
+          // For external scripts, use the `src` attribute
+          newScript.src = script.src;
+          newScript.onload = () => console.log(`${script.src} loaded.`);
+          newScript.onerror = () =>
+            console.error(`Failed to load script: ${script.src}`);
+        } else {
+          // For inline scripts, use `textContent`
+          newScript.textContent = script.textContent;
+        }
+        // Append the new script element to the document body
+        document.body.appendChild(newScript);
+        console.log(container);
+      });
+    }
+
+    function loadContent() {
+      const desktopContent = document.getElementById("desktopContent");
+      const mobileContent = document.getElementById("mobileContent");
+      const tabletContent = document.getElementById("tabletContent");
+      const laptopContent = document.getElementById("laptopContent");
+
+      if (isMobile()) {
+        fetch("techmobile.html")
+          .then((response) => response.text())
+          .then((html) => {
+            mobileContent.innerHTML = "";
+            mobileContent.insertAdjacentHTML("beforeend", html);
+            executeScripts(mobileContent);
+            initializeMobileMenu();
+            getTopScrollingForMobile();
+
+            tabletContent.innerHTML = '';
+            laptopContent.innerHTML = '';
+            desktopContent.innerHTML = '';
+          });
+      } else if (isTablet()) {
+        fetch("techtablet.html")
+          .then((response) => response.text())
+          .then((html) => {
+            tabletContent.innerHTML = "";
+            tabletContent.insertAdjacentHTML("beforeend", html);
+            executeScripts(tabletContent);
+            initializeMobileMenu();
+            getTopScrollingForMobile();
+
+            mobileContent.innerHTML = '';
+            laptopContent.innerHTML = '';
+            desktopContent.innerHTML = '';
+          });
+      } else if (isLaptop()) {
+        fetch("techlaptop.html")
+          .then((response) => response.text())
+          .then((html) => {
+            laptopContent.innerHTML = "";
+            laptopContent.insertAdjacentHTML("beforeend", html);
+            executeScripts(laptopContent);
+
+            mobileContent.innerHTML = '';
+            tabletContent.innerHTML = '';
+            desktopContent.innerHTML = '';
+          });
+      } else {
+        fetch("techdesktop.html")
+          .then((response) => response.text())
+          .then((html) => {
+            desktopContent.innerHTML = "";
+            desktopContent.insertAdjacentHTML("beforeend", html);
+            executeScripts(desktopContent);
+
+            mobileContent.innerHTML = '';
+            tabletContent.innerHTML = '';
+            laptopContent.innerHTML = '';
+          });
+      }
+    }
+
+    // Initial load
+    loadContent();
+
+    // Reload on window resize
+    window.addEventListener("resize", loadContent);
+  </script>
+</body>
+
+</html>
